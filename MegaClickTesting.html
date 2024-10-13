@@ -96,7 +96,7 @@ Layout
 			class:fullWidth
 		*buttons
 			contains:Buttons
-  *log
+  	*log
 		  contains:Log
 		  class:halfWidth
 	*store
@@ -117,19 +117,19 @@ Buttons
 		name:Make Zenny
 		desc:What, did you think screws were accepted as currency everywhere? No, if you're going to put on a production, you'll need cold hard cash.
 		on click:
-		  if (1poz < 1)
-		    yield 1 zenny
-		  else if (yashichiBuster=0)
-		    yield 1poz zenny
-		    //yield 1 bagzpt
-  		else
-  		  yield (zenny:ps*0.3) zenny
-  		  if (chance(0.01%))
-  		    yield 1 yashichi
-  		  end
-  		end
-  		anim icon wobble
-  	end
+			if (1poz < 1)
+				yield 1 zenny
+			else if (yashichiBuster=0)
+				yield 1poz zenny
+				//yield 1 bagzpt
+  			else
+  				yield (zenny:ps*0.3) zenny
+  		  		if (chance(0.01%))
+  		    			yield 1 yashichi
+  		  		end
+  			end
+  			anim icon wobble
+		end
 		class:bigButton
 		no text
 		icon:https://file.garden/ZsNT8FBfzxAupLGa/Mega%20Man%20the%20Musical/Zenny%20Bag.png
@@ -160,11 +160,11 @@ Resources
 		hidden
 		show earned
 	*canClick|canClicks
-	  name:? Can Clicks
-	  desc:How many ? Cans have been clicked.
-	  icon:icons[0,0] icons[14,0]
-	  always hidden
-	  show earned
+	  	name:? Can Clicks
+	  	desc:How many ? Cans have been clicked.
+	  	icon:icons[0,0] icons[14,0]
+	  	always hidden
+	  	show earned
 	/*
 	*bagzpt
 		name:Click Earned Zenny
@@ -1047,9 +1047,9 @@ Upgrades
 		icon:icons[0,0] icons[13,0]
 		req:10 zenny
 		passive:
-		 if (yashichiBuster=0)
-		    multiply zenny yield of makeZenny by 1.25
-		  end
+			if (yashichiBuster=0)
+				multiply zenny yield of makeZenny by 1.25
+			end
 		end
 		cost:100 zenny
 	*oiledBuster
@@ -1058,9 +1058,9 @@ Upgrades
 		icon:icons[0,0] icons[13,0]
 		req:have zennyBuster, 100 zenny
 		passive:
-		 if (yashichiBuster=0)
-		    multiply zenny yield of makeZenny by 1.25
-		  end
+			if (yashichiBuster=0)
+				multiply zenny yield of makeZenny by 1.25
+			end
 		end
 		cost:200 zenny
 	*busterScrews
@@ -1069,9 +1069,9 @@ Upgrades
 		icon:icons[0,0] icons[13,0]
 		req:have oiledBuster, 1000 zenny
 		passive:
-		 if (yashichiBuster=0)
-		    multiply zenny yield of makeZenny by 1.25
-		  end
+			if (yashichiBuster=0)
+				multiply zenny yield of makeZenny by 1.25
+			end
 		end
 		cost:2000 zenny
 	*busterPower
@@ -1080,9 +1080,9 @@ Upgrades
 		icon:icons[0,0] icons[13,0]
 		req:have busterScrews, 10000 zenny
 		passive:
-		 if (yashichiBuster=0)
-		    multiply zenny yield of makeZenny by 1.5
-		  end
+			if (yashichiBuster=0)
+				multiply zenny yield of makeZenny by 1.5
+			end
 		end
 		cost:20000 zenny
 	*cerataniumBuster
@@ -1091,9 +1091,9 @@ Upgrades
 		icon:icons[0,0] icons[13,0]
 		req:have busterPower, 100000 zenny
 		passive:
-		 if (yashichiBuster=0)
-		    multiply zenny yield of makeZenny by 1.5
-		  end
+			if (yashichiBuster=0)
+				multiply zenny yield of makeZenny by 1.5
+			end
 		end
 		cost:200000 zenny
 	*fancyLEDLight
@@ -1102,9 +1102,9 @@ Upgrades
 		icon:icons[0,0] icons[13,0]
 		req:have cerataniumBuster, 1000000 zenny
 		passive:
-		 if (yashichiBuster=0)
-		    multiply zenny yield of makeZenny by 1.5
-		  end
+			if (yashichiBuster=0)
+				multiply zenny yield of makeZenny by 1.5
+			end
 		end
 		cost:2000000 zenny
 	*improvedDesign
@@ -1113,9 +1113,9 @@ Upgrades
 		icon:icons[0,0] icons[13,0]
 		req:have fancyLEDLight, 200000 publicity
 		passive:
-		 if (yashichiBuster=0)
-		    multiply zenny yield of makeZenny by 2
-		  end
+			if (yashichiBuster=0)
+				multiply zenny yield of makeZenny by 2
+			end
 		end
 		cost:400000 publicity
 	*retroDesign
@@ -1124,17 +1124,17 @@ Upgrades
 		icon:icons[0,0] icons[13,0]
 		req:have improvedDesign, 1000000000 zenny
 		passive:
-		 if (yashichiBuster=0)
-		    multiply zenny yield of makeZenny by 2
-		  end
+			if (yashichiBuster=0)
+				multiply zenny yield of makeZenny by 2
+			end
 		end
 		cost:2000000000 zenny
 	*yashichiBuster
-	  name:Yashichi Buster
-	  desc:Your Zenny Buster's final form, this upgrade locks Manual Zenny production to 1/3 of your Zenny Per Second, keeping you from needing to upgrade it ever again.
-	  icon:icons[1,0] icons[13,0]
-	  req:have retroDesign, 1000000000000 zenny
-	  cost:1 yashichi
+		name:Yashichi Buster
+		desc:Your Zenny Buster's final form, this upgrade locks Manual Zenny production to 1/3 of your Zenny Per Second, keeping you from needing to upgrade it ever again.
+		icon:icons[1,0] icons[13,0]
+		req:have retroDesign, 1000000000000 zenny
+		cost:1 yashichi
 	*starPolish
 		name:Star Polish
 		desc:Shines up the Starforce, boosting their production by 2% for each owned.
@@ -1333,10 +1333,12 @@ Upgrades
 		desc:Roll is outfitted with her own Buster, helping her keep undesirables out of the theater, and boosting her production by 1% of your total production per second.
 		icon:icons[0,0] icons[12,0]
 		req:25 roll
-		passive:increase zenny yield of roll by 1poz
-		passive:increase rollzpt yield of roll by 1poz
-		passive:increase publicity yield of roll by 1pop
-		passive:increase rollppt yield of roll by 1pop
+		passive:
+			increase zenny yield of roll by 1poz
+			increase rollzpt yield of roll by 1poz
+			increase publicity yield of roll by 1pop
+			increase rollppt yield of roll by 1pop
+		end
 		cost:20000 zenny
 	*newDress
 		name:New Dress
@@ -1350,10 +1352,12 @@ Upgrades
 		desc:While a buster is well and good, nothing works quite so well as a trusty broom. This upgraded weapon gives Roll's production a boost of 2% of your total production per second.
 		icon:icons[1,0] icons[4,1]
 		req:have newDress, 75 roll
-		passive:increase zenny yield of roll by (2*1poz)
-		passive:increase rollzpt yield of roll by (2*1poz)
-		passive:increase publicity yield of roll by (2*1pop)
-		passive:increase rollppt yield of roll by (2*1pop)
+		passive:
+			increase zenny yield of roll by (2*1poz)
+			increase rollzpt yield of roll by (2*1poz)
+			increase publicity yield of roll by (2*1pop)
+			increase rollppt yield of roll by (2*1pop)
+		end
 		cost:1 yashichi
 	*fabricShears
 		name:Fabric Shears
@@ -1766,40 +1770,48 @@ Upgrades
 		desc:A beam capable of creating mid-air platforms, this weapon boosts Mega Man's production by 1% of your production per second, and lets him pull off some sick stunts.
 		icon:icons[0,0] icons[8,0]
 		req:have thunderBeam, 25 megaMan
-		passive:increase zenny yield of megaMan by 1poz
-		passive:increase megazpt yield of megaMan by 1poz
-		passive:increase publicity yield of megaMan by 1pop
-		passive:increase megappt yield of megaMan by 1pop
+		passive:
+			increase zenny yield of megaMan by 1poz
+			increase megazpt yield of megaMan by 1poz
+			increase publicity yield of megaMan by 1pop
+			increase megappt yield of megaMan by 1pop
+		end
 		cost:5000000000 zenny
 	*itemOne
 		name:Item-1
 		desc:A hovering platform to help reach tough spots, this Item boosts Mega Man's production by 1% of your production per second.
 		icon:icons[0,0] icons[9,0]
 		req:have atomicFire, 50 megaMan
-		passive:increase zenny yield of megaMan by 1poz
-		passive:increase megazpt yield of megaMan by 1poz
-		passive:increase publicity yield of megaMan by 1pop
-		passive:increase megappt yield of megaMan by 1pop
+		passive:
+			increase zenny yield of megaMan by 1poz
+			increase megazpt yield of megaMan by 1poz
+			increase publicity yield of megaMan by 1pop
+			increase megappt yield of megaMan by 1pop
+		end
 		cost:10000000000000 zenny
 	*itemTwo
 		name:Item-2
 		desc:The coolest way to travel (for now), this jet sled boosts Mega Man's production by 1% of your production per second.
 		icon:icons[0,0] icons[10,0]
 		req:have airShooter, 50 megaMan
-		passive:increase zenny yield of megaMan by 1poz
-		passive:increase megazpt yield of megaMan by 1poz
-		passive:increase publicity yield of megaMan by 1pop
-		passive:increase megappt yield of megaMan by 1pop
+		passive:
+			increase zenny yield of megaMan by 1poz
+			increase megazpt yield of megaMan by 1poz
+			increase publicity yield of megaMan by 1pop
+			increase megappt yield of megaMan by 1pop
+		end
 		cost:10000000000000 zenny
 	*itemThree
 		name:Item-3
 		desc:This crawling elevator platform was revolutionary for its time, and can still boost Mega Man's production by 1% of your production per second.
 		icon:icons[0,0] icons[11,0]
 		req:have timeStopper, 50 megaMan
-		passive:increase zenny yield of megaMan by 1poz
-		passive:increase megazpt yield of megaMan by 1poz
-		passive:increase publicity yield of megaMan by 1pop
-		passive:increase megappt yield of megaMan by 1pop
+		passive:
+			increase zenny yield of megaMan by 1poz
+			increase megazpt yield of megaMan by 1poz
+			increase publicity yield of megaMan by 1pop
+			increase megappt yield of megaMan by 1pop
+		end
 		cost:10000000000000 zenny
 	*cerataniumAlloy
 		name:Ceratanium Alloy
@@ -2273,7 +2285,7 @@ Upgrades
 		icon:icons[0,0] icons[15,1]
 		req:50 quakeWoman
 		passive:
-		  increase zenny yield of quakeWoman by 1poz
+			increase zenny yield of quakeWoman by 1poz
 			increase quakezpt yield of quakeWoman by 1poz
 			increase publicity yield of quakeWoman by 1pop
 			increase quakeppt yield of quakeWoman by 1pop
@@ -2668,11 +2680,11 @@ Upgrades
 		icon:icons[0,0] icons[3,1]
 		req:50 protoMan, 1 megaMan, 1 roll
 		passive:
-		  increase zenny yield of protoMan by 1poz
+			increase zenny yield of protoMan by 1poz
 			increase protozpt yield of protoMan by 1poz
 			increase publicity yield of protoMan by 1pop
 			increase protoppt yield of protoMan by 1pop
-		  increase zenny yield of megaMan by 1poz
+			increase zenny yield of megaMan by 1poz
 			increase megazpt yield of megaMan by 1poz
 			increase publicity yield of megaMan by 1pop
 			increase megappt yield of megaMan by 1pop
@@ -2688,11 +2700,11 @@ Upgrades
 		icon:icons[1,0] icons[15,0]
 		req:75 protoMan, 1 roll, 1 megaMan
 		passive:
-		  increase zenny yield of protoMan by (2*1poz)
+			increase zenny yield of protoMan by (2*1poz)
 			increase protozpt yield of protoMan by (2*1poz)
 			increase publicity yield of protoMan by (2*1pop)
 			increase protoppt yield of protoMan by (2*1pop)
-		  increase zenny yield of megaMan by (2*1poz)
+			increase zenny yield of megaMan by (2*1poz)
 			increase megazpt yield of megaMan by (2*1poz)
 			increase publicity yield of megaMan by (2*1pop)
 			increase megappt yield of megaMan by (2*1pop)
@@ -2715,25 +2727,25 @@ Upgrades
 		cost:zenny
 	*/
 	*canUpgradeOne
-	  name:Frequent Shipments
-	  desc:? Cans will appear 20% faster.
-	  icon:icons[0,0] icons[14,0]
-	  req:3 questionCan:clicks
-	  passive:multiply frequency of questionCan by 0.8
-	  cost:10000 zenny
+		name:Frequent Shipments
+		desc:? Cans will appear 20% faster.
+		icon:icons[0,0] icons[14,0]
+		req:3 questionCan:clicks
+		passive:multiply frequency of questionCan by 0.8
+		cost:10000 zenny
 	*canUpgradeTwo
-	  name:? Can Coating
-	  desc:Treated with a special chemical solution, ? Cans will last 20% longer before disappearing.
-	  icon:icons[0,0] icons[14,0]
-	  req:10 questionCan:clicks
-	  passive:multiply duration of questionCan by 1.2
-	  cost:1000000 zenny
+		name:? Can Coating
+		desc:Treated with a special chemical solution, ? Cans will last 20% longer before disappearing.
+		icon:icons[0,0] icons[14,0]
+		req:10 questionCan:clicks
+		passive:multiply duration of questionCan by 1.2
+		cost:1000000 zenny
 	*canUpgradeThree
-	  name:Rigged Odds
-	  desc:Through a bit of probability manipulation, the odds of a ? Can yielding a Yashichi are 5% higher.
-	  icon:icons[1,0] icons[14,0]
-	  req:20 questionCan:clicks, yashichievOne=1
-	  cost:1 yashichi
+		name:Rigged Odds
+		desc:Through a bit of probability manipulation, the odds of a ? Can yielding a Yashichi are 5% higher.
+		icon:icons[1,0] icons[14,0]
+		req:20 questionCan:clicks, yashichievOne=1
+		cost:1 yashichi
 
 Achievements
 	*firstStep
@@ -3582,8 +3594,8 @@ Achievements
 		icon:icons[0,0] icons[0,1]
 		req:1 roll, 1 cutMan, 1 gutsMan, 1 iceMan, 1 bombMan, 1 fireMan, 1 elecMan, 1 megaMan
 	*understudies
-	  name:Understudies
-	  desc:Have all the first act's understudies.
+		name:Understudies
+		desc:Have all the first act's understudies.
 		icon:icons[0,0] icons[8,2]
 		req:1 timeMan, 1 oilMan, 1 bondMan
 	*act2
@@ -3598,23 +3610,23 @@ Achievements
 		req:1 megaMan, 1 rush, 1 needleMan, 1 magnetMan, 1 geminiMan, 1 hardMan, 1 topMan, 1 snakeMan, 1 sparkMan, 1 shadowMan, 1 protoMan
 	/*
 	*lalindeSisters
-	  name:LaLinde Sisters
-	  desc:
-	  icon:icons[0,0] icons[15,1]
-	  req:1 quakeWoman, 1 vesperWoman
+		name:LaLinde Sisters
+		desc:
+		icon:icons[0,0] icons[15,1]
+		req:1 quakeWoman, 1 vesperWoman
 	*/
 	*canAchieveOne
-	  name:Questionable Contents
+		name:Questionable Contents
 		desc:Click your first ? Can.
 		icon:icons[0,0] icons[14,0]
 		req:canClicks >= 1
 	*canAchieveTwo
-	  name:Gotten Lucky Yet?
+		name:Gotten Lucky Yet?
 		desc:Click 10 ? Cans.
 		icon:icons[0,0] icons[14,0]
 		req:canClicks >= 10
 	*canAchieveThree
-	  name:The Long Game
+		name:The Long Game
 		desc:Click 100 ? Cans.
 		icon:icons[0,0] icons[14,0]
 		req:canClicks >= 100
@@ -3633,11 +3645,11 @@ Shinies
 		movement:anywhere growShrink
 		duration:30
 		on click:
-		  yield 1 canClick
-		  if (canClicks = 3) toast The ? Can reveals a new upgrade.
-		  if (canClicks = 10) toast The ? Can reveals a new upgrade.
-		  if (canClicks = 20) toast The ? Can reveals a new upgrade.
-		  if (chance(10%) and timeUnlock=0 and roll>=10)
+			yield 1 canClick
+			if (canClicks = 3) toast The ? Can reveals a new upgrade.
+			if (canClicks = 10) toast The ? Can reveals a new upgrade.
+			if (canClicks = 20) toast The ? Can reveals a new upgrade.
+			if (chance(10%) and timeUnlock=0 and roll>=10)
 				toast The ? Can reveals a new upgrade.
 				yield timeUnlock
 			else if (chance(10%) and oilUnlock=0 and timeUnlock=1 and roll>=10)
@@ -3654,7 +3666,7 @@ Shinies
 				yield quakeUnlock
 			/*
 			else if (chance(5%) and quintUnlock=0 and protoMan>=10)
-			  toast The ? Can reveals a new upgrade.
+				toast The ? Can reveals a new upgrade.
 				yield quintUnlock
 			else if (chance(10%) and vesperUnlock=0 and quakeWoman>=1 and protoMan>=25)
 				toast The ? Can reveals a new upgrade.
