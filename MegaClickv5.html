@@ -94,9 +94,9 @@ Resources
 		icon:icons[0,0] icons[3,0]
 		is always:(publicity:ps*0.01)
 		always hidden
-	*starforceppt
-		name:Starforce Earned Publicity
-		desc:How much Publicity your Starforce have earned.
+	*gearppt
+		name:Gear Earned Publicity
+		desc:How much Publicity your Gears have earned.
 		icon:icons[0,0] icons[3,0]
 		always hidden
 		show earned
@@ -113,12 +113,12 @@ Buildings
 		on tick:yield 0.00001157407407407407 yashichi
 		on start:log Welcome!
 		cost:0 zenny
-	*starforce
-		name:Starforce
-		desc:A basic promotional tool. Doesn't reel in any cash by itself, but once you hire others on...</>Your [this] Starforce are earning <b>[starforceppt:ps]</b> Publicity each second. <b>[starforceppt]</b> Publicity earned so far.
+	*gear|gears
+		name:Gear|Gears
+		desc:A basic promotional tool. Doesn't reel in any cash by itself, but once you hire others on...</>Your [this] [?(this>1)|Gears are|[this] Gear is] earning <b>[gearppt:ps]</b> Publicity each second. <b>[gearppt]</b> Publicity earned so far.
 		icon:icons[0,0] icons[3,0]
 		on tick:yield 0.05 publicity
-		on tick:yield 0.05 starforceppt
+		on tick:yield 0.05 gearppt
 		passive:
 			multiply yield of FireMan by 1.05
 		end
@@ -127,7 +127,7 @@ Buildings
 	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z="2.5" %p="0.04" %cost="20"]
 
 Upgrades
-	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 starforce" %boost="3" %cost="20"]
+	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 gear" %boost="3" %cost="20"]
 
 Achievements
 	[i:robotAchievements %robot="Fire" %name10="Heat Miser" %name25="Mr. Sun" %name50="Green Christmas" %name75="12000°" %name100="Starting to Melt" %flavor10=".<q>Testing, 123.</q>" %icon="4,2"]
@@ -151,11 +151,11 @@ Includes
 	*include unlockUpgrade %robot %name %title="Man" %flavor %icon %req %boost %cost
 		*[%robot]Unlock
 			name:[%name]
-			desc:Boosts Starforce production by [%boost]0%, and unlocks [%robot] [%title].<q>[%flavor]</q>
+			desc:Boosts Gear production by [%boost]0%, and unlocks [%robot] [%title].<q>[%flavor]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:[%req]
 			passive:
-				multiply yield of starforce by 1.[%boost]
+				multiply yield of gears by 1.[%boost]
 				grant 1 [%robot][%title]
 			end
 			cost:[%cost] zenny
