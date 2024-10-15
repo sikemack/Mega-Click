@@ -124,9 +124,9 @@ Buildings
 		end
 		cost increase:135%
 		cost:25 zenny
-	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z=2.5 %p=0.04 %cost=3000]
+	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z="2.5" %p="0.04" %cost="3000"]
 Upgrades
-	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 starforce" %boost=3 %cost=3000]
+	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 starforce" %boost="3" %cost="3000"]
 Achievements
 
 Shinies
@@ -138,14 +138,12 @@ Includes
 			desc:<b><#[%textColor]>[%code] [%number]</#></b><q>[%flavor]</q>Currently at Level [this], [%name] [%title] is earning <b>[[%name]zpt:ps]</b> Zenny and <b>[[%name]ppt:ps]</b> Publicity each second.</><b>[[%name]zpt]</b> Zenny and <b>[[%name]ppt]</b> Publicity earned so far.
 			icon:icons[0,0] icons[[%icon]]
 			req:have [%name]Unlock
-			/*
 			on tick:
 				yield [%z] zenny
 				yield [%z] [%name]zpt
 				yield [%p] publicity
 				yield [%p] [%name]ppt
 			end
-			*/
 			cost:[%cost] zenny
 	*include unlockUpgrade %robot %name %title="Man" %flavor %icon %req %boost %cost
 		*[%robot]Unlock
