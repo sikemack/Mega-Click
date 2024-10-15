@@ -138,7 +138,7 @@ Includes
 	*include robotMaster %name %title="Man" %textColor="d82800" %code="DWN." %number %flavor %icon %z %p %cost
 		*[%name][%title]
 			name:[%name] [%title]
-			desc:<b><#[%textColor]>[%code] [%number]</#></b><q>[%flavor]</q>Currently at Level [this], [%name] [%title] is earning <b>[[%name]zpt:ps]</b> Zenny and <b>[[%name]ppt:ps]</b> Publicity each second.</><b>[[%name]zpt]</b> Zenny and <b>[[%name]ppt]</b> Publicity earned so far.
+			desc:<b><#[%textColor]>[%code] [%number]</#></></b>Currently at Level [this], [%name] [%title] is earning <b>[[%name]zpt:ps]</b> Zenny and <b>[[%name]ppt:ps]</b> Publicity each second.</><b>[[%name]zpt]</b> Zenny and <b>[[%name]ppt]</b> Publicity earned so far.<q>[%flavor]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:have [%name]Unlock
 			on tick:
@@ -155,7 +155,7 @@ Includes
 			icon:icons[0,0] icons[[%icon]]
 			req:[%req]
 			passive:multiply yield of starforce by 1.[%boost]
-			on earn:grant 1 [%robot][%title]
+			on earn:grant 1 [%robot] [%title]
 			cost:[%cost] zenny
 	*include robotResources %name %title="Man" %icon
 		*[%name]zpt
@@ -170,29 +170,29 @@ Includes
 			icon:icons[0,0] icons[[%icon]] icons[3,0]
 			always hidden
 			show earned
-	*include robotAchievements %robot %title=" Man" %name10 %name25 %name50 %name75 %name100 %flavor10="" %flavor25="" %flavor50="" %flavor75="" %flavor100="" %icon
+	*include robotAchievements %robot %title="Man" %name10 %name25 %name50 %name75 %name100 %flavor10 %flavor25 %flavor50 %flavor75 %flavor100 %icon
 		*[%robot]10
 			name:[%name10]
-			desc:Upgrade [%robot][%title] <b>10</b> times.<q>[%flavor10]</q>
+			desc:Upgrade [%robot] [%title] <b>10</b> times.<q>[%flavor10]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:10 [%robot][%title]
 		*[%robot]25
 			name:[%name25]
-			desc:Upgrade [%robot][%title] <b>25/b> times.<q>[%flavor25]</q>
+			desc:Upgrade [%robot] [%title] <b>25</b> times.<q>[%flavor25]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:25 [%robot][%title]
 		*[%robot]50
 			name:[%name50]
-			desc:Upgrade [%robot][%title] <b>50</b> times.<q>[%flavor50]</q>
+			desc:Upgrade [%robot] [%title] <b>50</b> times.<q>[%flavor50]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:50 [%robot][%title]
 		*[%robot]75
 			name:[%name75]
-			desc:Upgrade [%robot][%title] <b>75</b> times.<q>[%flavor75]</q>
+			desc:Upgrade [%robot] [%title] <b>75</b> times.<q>[%flavor75]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:75 [%robot][%title]
 		*[%robot]100
 			name:[%name100]
-			desc:Upgrade [%robot][%title] <b>100</b> times.<q>[%flavor100]</q>
+			desc:Upgrade [%robot] [%title] <b>100</b> times.<q>[%flavor100]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:100 [%robot][%title]
