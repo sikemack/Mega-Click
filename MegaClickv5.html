@@ -94,6 +94,12 @@ Resources
 		icon:icons[0,0] icons[3,0]
 		is always:(publicity:ps*0.01)
 		always hidden
+	*starforceppt
+		name:Starforce Earned Publicity
+		desc:How much Publicity your Starforce have earned.
+		icon:icons[0,0] icons[3,0]
+		always hidden
+		show earned
 	[i:robotResources %name="Fire" %icon=4,2]
 
 Buildings
@@ -126,7 +132,7 @@ Achievements
 Shinies
 
 Includes
-	*include robotMaster %name %title="Man" %textColor=d82800 %code="DWN." %number %flavor %icon %z %p %cost
+	*include robotMaster %name %title="Man" %textColor="d82800" %code="DWN." %number %flavor %icon %z %p %cost
 		*[%name][%title]
 			name:[%name] [%title]
 			desc:<b><#[%textColor]>[%code] [%number]</#></b><q>[%flavor]</q>Currently at Level [this], [%name] [%title] is earning <b>[[%name]zpt:ps]</b> Zenny and <b>[[%name]ppt:ps]</b> Publicity each second.</><b>[[%name]zpt]</b> Zenny and <b>[[%name]ppt]</b> Publicity earned so far.
