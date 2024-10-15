@@ -128,6 +128,7 @@ Buildings
 
 Upgrades
 	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 gear" %boost="3" %cost="20"]
+	[i:gearUpgrade %name="Fire" %flavor="A special Gear variant branded around Fire Man! Smells like smoke." %icon="4,2" %req="25" %cost="100000"]
 
 Achievements
 	[i:robotAchievements %robot="Fire" %name10="Heat Miser" %name25="Mr. Sun" %name50="Green Christmas" %name75="12000°" %name100="Starting to Melt" %icon="4,2"]
@@ -158,6 +159,14 @@ Includes
 				multiply yield of gears by 1.[%boost]
 				grant 1 [%robot][%title]
 			end
+			cost:[%cost] zenny
+	*include gearUpgrade %name %title="Man" %flavor %icon %req %cost
+		*[%name]Gear
+			name:[%name] Gear
+			desc:Boosts [%name] [%title]'s production by 30%.<q>[%flavor]</q>
+			icon:icons[2,0] icons[0,0] icons[[%icon]]
+			req:[%req] gears, 15 [%name][%title]
+			passive:multiply yield of [%name][%title] by 1.3
 			cost:[%cost] zenny
 	*include robotResources %name %title="Man" %icon
 		*[%name]zpt
