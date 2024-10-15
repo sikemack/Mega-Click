@@ -1,0 +1,211 @@
+Let's Make a game!
+	name:Mega Man the Musical
+ 	by:Sike Mack
+	desc:Beat the Robot Masters. Upgrade yourself. Save the world. AND DO IT IN SONG.
+	created:6/20/16
+	updated:10/13/2024
+	version:5.0.0
+
+Settings
+	tiling background:https://s19.postimg.cc/j86u5agub/Background_2.png
+	building cost increase:115%
+	building cost refund:60%
+	spritesheet:icons, 48 by 48, https://file.garden/ZsNT8FBfzxAupLGa/Mega%20Man%20the%20Musical/Spritesheet.png
+
+Layout
+	*main
+		contains:res, buttons
+		*res
+			contains:Resources
+			class:fullWidth
+		*buttons
+			contains:Buttons
+  	*log
+		  contains:Log
+		  class:halfWidth
+	*store
+		contains:buildings, upgrades
+		ps:show
+		*buildings
+			contains:BulkDisplay, Buildings
+			header:<t>Robots</t>
+			tooltip origin:left
+		*upgrades
+			contains:Upgrades
+			header:<t>Upgrades</t>
+			costs:hide
+			names:hide
+
+Buttons
+	*makeZenny
+		name:Make Zenny
+		desc:What, did you think screws were accepted as currency everywhere? No, if you're going to put on a production, you'll need cold hard cash.
+		on click:
+			if (1poz < 1)
+				yield 1 zenny
+			/*
+			else if (yashichiBuster=0)
+				yield 1poz zenny
+			*/
+  			else
+  				yield (zenny:ps*0.3) zenny
+  		  		if (chance(0.01%))
+  		    			yield 1 yashichi
+  		  		end
+  			end
+  			anim icon wobble
+		end
+		class:bigButton
+		no text
+		icon:https://file.garden/ZsNT8FBfzxAupLGa/Mega%20Man%20the%20Musical/Zenny%20Bag.png
+		show clicks
+
+Resources
+	*zenny
+		name:Zenny
+		desc:The aforementioned cold hard cash.
+		icon:icons[0,0] icons[4,0]
+		show earned
+	*publicity
+		name:Publicity
+		desc:The best gauge for how well the show is going.
+		icon:icons[0,0] icons[3,0]
+		hidden when 0
+		show earned
+	*counter
+		name:Seconds
+		desc:Time functionality may be more implicit now, but still.
+		icon:icons[0,0] icons[6,2]
+		always hidden
+		show earned
+	*yashichi
+		name:Yashichi
+		desc:The most valuable resource available, it harnesses wind power to generate massive amounts of energy.
+		icon:icons[0,0] icons[6,0]
+		hidden
+		show earned
+	*1poz
+		name:1% of Zenny
+		icon:icons[0,0] icons[4,0]
+		is always:(zenny:ps*0.01)
+		always hidden
+	*1pop
+		name:1% of Publicity
+		icon:icons[0,0] icons[3,0]
+		is always:(publicity:ps*0.01)
+		always hidden
+	[i:robotResources %name="Fire" %icon=4,2]
+
+Buildings
+	*timer
+		name:Timer
+		desc:I can't say I fully understand it.
+		icon:icons[0,0] icons[6,2]
+		always hidden
+		start with:1
+		on tick:yield 1 counter
+		on tick:yield 0.00001157407407407407 yashichi
+		on start:log Welcome!
+		cost:0 zenny
+	*starforce
+		name:Starforce
+		desc:A basic promotional tool. Doesn't reel in any cash by itself, but once you hire others on...</>Your [this] Starforce are earning <b>[starforceppt:ps]</b> Publicity each second. <b>[starforceppt]</b> Publicity earned so far.
+		icon:icons[0,0] icons[3,0]
+		on tick:yield 0.05 publicity
+		on tick:yield 0.05 starforceppt
+		passive:
+
+		end
+		cost increase:135%
+		cost:25 zenny
+	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z=2.5 %p=0.04 %cost=3000]
+Upgrades
+	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 starforce" %boost=3 %cost=3000]
+Achievements
+
+Shinies
+	/*
+	*questionCan
+		icon:icons[0,0] icons[14,0]
+		frequency:120
+		//frequency:5
+		movement:anywhere growShrink
+		duration:30
+		on click:
+			yield 1 canClick
+			if (canClicks = 3) toast The ? Can reveals a new upgrade.
+			if (canClicks = 10) toast The ? Can reveals a new upgrade.
+			if (canClicks = 20) toast The ? Can reveals a new upgrade.
+			if (chance(10%) and timeUnlock=0 and roll>=10)
+				toast The ? Can reveals a new upgrade.
+				yield timeUnlock
+			else if (chance(10%) and oilUnlock=0 and timeUnlock=1 and roll>=10)
+				toast The ? Can reveals a new upgrade.
+				yield oilUnlock
+			else if (chance(10%) and bondUnlock=0 and timeUnlock=1 and oilUnlock=1 and roll>=10)
+				toast The ? Can reveals a new upgrade.
+				yield bondUnlock
+			else if (chance(5%) and enkerUnlock=0 and (metalMan>=10, airMan>=10, bubbleMan>=10, quickMan>=10, crashMan>=10, flashMan>=10, heatMan>=10, woodMan>=10))
+				toast The ? Can reveals a new upgrade.
+				yield enkerUnlock
+			else if (chance(10%) and quakeUnlock=0 and rush>=10)
+				toast The ? Can reveals a new upgrade.
+				yield quakeUnlock
+			/*
+			else if (chance(5%) and quintUnlock=0 and protoMan>=10)
+				toast The ? Can reveals a new upgrade.
+				yield quintUnlock
+			else if (chance(10%) and vesperUnlock=0 and quakeWoman>=1 and protoMan>=25)
+				toast The ? Can reveals a new upgrade.
+				yield vesperUnlock
+			*/
+			else if (chance(15%) and canUpgradeThree=1)
+				toast The ? Can grants you 1 Yashichi.
+				yield 1 yashichi
+			else if (chance(10%))
+				toast The ? Can grants you 1 Yashichi.
+				yield 1 yashichi
+			else
+				$amount=max(100,random(zenny:ps*60*2,zenny:ps*60*5))
+				toast The ? Can grants you<//><b>[$amount] Zenny</b>!
+				yield $amount zenny
+			end
+		end
+		*/
+
+Includes
+	*include robotMaster %name %title="Man" %textColor=d82800 %code="DWN." %number %flavor %icon %z %p %cost
+		*[%name][%title]
+			name:[%name] [%title]
+			desc:<b><#[%textColor]>[%code] [%number]</#></b><q>[%flavor]</q>Currently at Level [this], [%name] [%title] is earning <b>[[%name]zpt:ps]</b> Zenny and <b>[[%name]ppt:ps]</b> Publicity each second.</><b>[[%name]zpt]</b> Zenny and <b>[[%name]ppt]</b> Publicity earned so far.
+			icon:icons[0,0] icons[[%icon]]
+			req:have [%name]Unlock
+			on tick:
+				yield [%z] zenny
+				yield [%z] [%name]zpt
+				yield [%p] publicity
+				yield [%p] [%name]ppt
+			end
+			cost:[%cost] zenny
+	*include unlockUpgrade %robot %name %title="Man" %flavor %icon %req %boost %cost
+		*[%robot]Unlock
+			name:[%name]
+			desc:Boosts Starforce production by [%boost]0%, and unlocks [%robot] [%title].<q>[%flavor]</q>
+			icon:icons[0,0] icons[[%icon]]
+			req:[%req]
+			passive:multiply yield of starforce by 1.[%boost]
+			on earn:grant 1 [%robot][%title]
+			cost:[%cost] zenny
+	*include robotResources %name %title="Man" %icon
+		*[%name]zpt
+			name:[%name] [%title]'s Earned Zenny
+			desc:How much Zenny [%name] [%title] has earned.
+			icon:icons[0,0] icons[[%icon]] icons[4,0]
+			always hidden
+			show earned
+		*[%name]ppt
+			name:[%name] [%title]'s Earned Publicity
+			desc:How much Publicity [%name] [%title] has earned.
+			icon:icons[0,0] icons[[%icon]] icons[3,0]
+			always hidden
+			show earned
