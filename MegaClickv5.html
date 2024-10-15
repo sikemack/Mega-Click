@@ -124,54 +124,6 @@ Upgrades
 Achievements
 
 Shinies
-	/*
-	*questionCan
-		icon:icons[0,0] icons[14,0]
-		frequency:120
-		//frequency:5
-		movement:anywhere growShrink
-		duration:30
-		on click:
-			yield 1 canClick
-			if (canClicks = 3) toast The ? Can reveals a new upgrade.
-			if (canClicks = 10) toast The ? Can reveals a new upgrade.
-			if (canClicks = 20) toast The ? Can reveals a new upgrade.
-			if (chance(10%) and timeUnlock=0 and roll>=10)
-				toast The ? Can reveals a new upgrade.
-				yield timeUnlock
-			else if (chance(10%) and oilUnlock=0 and timeUnlock=1 and roll>=10)
-				toast The ? Can reveals a new upgrade.
-				yield oilUnlock
-			else if (chance(10%) and bondUnlock=0 and timeUnlock=1 and oilUnlock=1 and roll>=10)
-				toast The ? Can reveals a new upgrade.
-				yield bondUnlock
-			else if (chance(5%) and enkerUnlock=0 and (metalMan>=10, airMan>=10, bubbleMan>=10, quickMan>=10, crashMan>=10, flashMan>=10, heatMan>=10, woodMan>=10))
-				toast The ? Can reveals a new upgrade.
-				yield enkerUnlock
-			else if (chance(10%) and quakeUnlock=0 and rush>=10)
-				toast The ? Can reveals a new upgrade.
-				yield quakeUnlock
-			/*
-			else if (chance(5%) and quintUnlock=0 and protoMan>=10)
-				toast The ? Can reveals a new upgrade.
-				yield quintUnlock
-			else if (chance(10%) and vesperUnlock=0 and quakeWoman>=1 and protoMan>=25)
-				toast The ? Can reveals a new upgrade.
-				yield vesperUnlock
-			*/
-			else if (chance(15%) and canUpgradeThree=1)
-				toast The ? Can grants you 1 Yashichi.
-				yield 1 yashichi
-			else if (chance(10%))
-				toast The ? Can grants you 1 Yashichi.
-				yield 1 yashichi
-			else
-				$amount=max(100,random(zenny:ps*60*2,zenny:ps*60*5))
-				toast The ? Can grants you<//><b>[$amount] Zenny</b>!
-				yield $amount zenny
-			end
-		end
-		*/
 
 Includes
 	*include robotMaster %name %title="Man" %textColor=d82800 %code="DWN." %number %flavor %icon %z %p %cost
