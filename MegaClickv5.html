@@ -120,7 +120,7 @@ Buildings
 		on tick:yield 0.05 publicity
 		on tick:yield 0.05 starforceppt
 		passive:
-
+			multiply yield of FireMan by 1.05
 		end
 		cost increase:135%
 		cost:25 zenny
@@ -140,7 +140,7 @@ Includes
 			name:[%name] [%title]
 			desc:<b><#[%textColor]>[%code] [%number]</#></></b>Currently at Level [this], [%name] [%title] is earning <b>[[%name]zpt:ps]</b> Zenny and <b>[[%name]ppt:ps]</b> Publicity each second.</><b>[[%name]zpt]</b> Zenny and <b>[[%name]ppt]</b> Publicity earned so far.<q>[%flavor]</q>
 			icon:icons[0,0] icons[[%icon]]
-			req:have [%name]Unlock
+			//req:have [%name]Unlock
 			on tick:
 				yield [%z] zenny
 				yield [%z] [%name]zpt
@@ -148,6 +148,7 @@ Includes
 				yield [%p] [%name]ppt
 			end
 			cost:[%cost] zenny
+			hidden when 0
 	*include unlockUpgrade %robot %name %title="Man" %flavor %icon %req %boost %cost
 		*[%robot]Unlock
 			name:[%name]
@@ -155,7 +156,9 @@ Includes
 			icon:icons[0,0] icons[[%icon]]
 			req:[%req]
 			passive:multiply yield of starforce by 1.[%boost]
-			passive:grant 1 [%robot][%title]
+			on earn:
+				grant 1 [%robot][%title]
+				//show [%robot][%title]
 			cost:[%cost] zenny
 	*include robotResources %name %title="Man" %icon
 		*[%name]zpt
