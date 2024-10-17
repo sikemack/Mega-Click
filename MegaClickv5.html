@@ -3,7 +3,7 @@ Let's make a game!
  	by:Sike Mack
 	desc:Beat the Robot Masters. Upgrade yourself. Save the world. AND DO IT IN SONG.
 	created:6/20/16
-	updated:10/13/2024
+	updated:10/17/2024
 	version:5.0.0
 
 Settings
@@ -84,6 +84,12 @@ Resources
 		icon:icons[0,0] icons[6,0]
 		hidden
 		show earned
+	*canClick|canClicks
+	  	name:? Can Clicks
+	  	desc:How many ? Cans have been clicked.
+	  	icon:icons[0,0] icons[14,0]
+	  	always hidden
+	  	show earned
 	*1poz
 		name:1% of Zenny
 		icon:icons[0,0] icons[4,0]
@@ -120,16 +126,28 @@ Buildings
 		icon:icons[0,0] icons[3,0]
 		on tick:yield 0.05 publicity
 		on tick:yield 0.05 gearppt
-		passive:
-			multiply yield of FireMan by 1.05
-			multiply yield of MegaMan by 1.05
-		end
+		[i:gearBoost %boost="1.05" %boostPlus="1.07"]
 		cost increase:135%
 		cost:25 zenny
 	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z="2.5" %p="0.04" %cost="20"]
 	[i:robotMaster %name="Mega" %textColor="0070e8" %code="DLN." %number="001" %flavor="The star of the show." %icon="0,1" %z="5000" %p="0.1" %increase="135"%cost="950000"]
 
 Upgrades
+	//Zenny Buster
+	[i:zennyUpgrade %id="1" %name="Zenny Buster" %boost="1.25" %boostPercent="25" %flavor="A high tech blaster arm to boost your click power." %req="10 zenny" %cost="100 zenny"]
+	[i:zennyUpgrade %id="2" %name="Oiled Buster" %boost="1.25" %boostPercent="25" %flavor="Your Zenny Buster has been oiled." %req="have zennyUpgrade1, 100 zenny" %cost="200 zenny"]
+	[i:zennyUpgrade %id="3" %name="Buster Screws" %boost="1.25" %boostPercent="25" %flavor="Some tighter screws for your Zenny Buster." %req="have zennyUpgrade2, 1000 zenny" %cost="2000 zenny"]
+	[i:zennyUpgrade %id="4" %name="Buster Power" %boost="1.5" %boostPercent="50" %flavor="A newfangled power cell for your Zenny Buster." %req="have zennyUpgrade3, 10000 zenny" %cost="20000 zenny"]
+	[i:zennyUpgrade %id="5" %name="Ceratanium Buster" %boost="1.5" %boostPercent="50" %flavor="Your Zenny Buster has been reinforced with Ceratanium, making it stronger than ever." %req="have zennyUpgrade4, 100000 zenny" %cost="200000 zenny"]
+	[i:zennyUpgrade %id="6" %name="Fancy LED Light" %boost="1.5" %boostPercent="50" %flavor="It blinks!" %req="have zennyUpgrade5, 1000000 zenny" %cost="2000000 zenny"]
+	[i:zennyUpgrade %id="7" %name="Improved Buster Design" %boost="2" %boostPercent="100" %flavor="At the cost of some Publicity, your Zenny Buster has been revamped to suit the latest styles." %req="have zennyUpgrade6, 200000 publicity" %cost="400000 publicity"]
+	[i:zennyUpgrade %id="8" %name="Retro Buster Design" %boost="2" %boostPercent="100" %flavor="Y'know, that newer design is nice and all, but retro is where it's at. Why do you think we're using this art style? The Buster is re-revamped with an old-school look." %req="have zennyUpgrade7, 1000000000 zenny" %cost="2000000000 zenny"]
+	*yashichiBuster
+		name:Yashichi Buster
+		desc:Locks manual Zenny production to 1/3 of your Zenny Per Second.<q>Your Zenny Buster's final form, you won't need to upgrade it ever again.</q>
+		icon:icons[1,0] icons[13,0]
+		req:have zennyUpgrade8, 1000000000000 zenny
+		cost:1 yashichi
 	//Fire Man
 	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 gear" %boost="3" %cost="20"]
 	[i:gearUpgrade %name="Fire" %flavor="Smells like smoke." %icon="4,2" %req="25" %cost="100000"]
@@ -138,12 +156,101 @@ Upgrades
 	//Mega Man
 	[i:unlockUpgrade %robot="Mega" %name="Weapon Copy System" %flavor="Allows your star to mimic the weapons of the Robot Masters. Oh wait, the star. Knew we were forgetting something." %icon="0,1" %req="50 FireMan" %boost="7" %cost="250000000"]
 	[i:gearUpgrade %name="Mega" %flavor="Feels like you've accomplished something." %icon="0,1" %req="25" %cost="2500000000"]
+	//? Cans
+	*canUpgradeOne
+		name:Frequent Shipments
+		desc:? Cans will appear 20% faster.
+		icon:icons[0,0] icons[14,0]
+		req:3 questionCan:clicks
+		passive:multiply frequency of questionCan by 0.8
+		cost:10000 zenny
+	*canUpgradeTwo
+		name:? Can Coating
+		desc:Treated with a special chemical solution, ? Cans will last 20% longer before disappearing.
+		icon:icons[0,0] icons[14,0]
+		req:10 questionCan:clicks
+		passive:multiply duration of questionCan by 1.2
+		cost:1000000 zenny
+	*canUpgradeThree
+		name:Rigged Odds
+		desc:Through a bit of probability manipulation, the odds of a ? Can yielding a Yashichi are 5% higher.
+		icon:icons[1,0] icons[14,0]
+		req:20 questionCan:clicks, yashichievOne=1
+		cost:1 yashichi
 
 Achievements
 	[i:robotAchievements %robot="Fire" %name10="Heat Miser" %name25="Mr. Sun" %name50="Green Christmas" %name75="12000°" %name100="Starting to Melt" %icon="4,2"]
 	[i:robotAchievements %robot="Mega" %name10="Rockin'" %name25="Rollin'" %name50="Bustin'" %name75="Mega" %name100="Man" %icon="0,1"]
+	*canAchieveOne
+		name:Questionable Contents
+		desc:Click your first ? Can.
+		icon:icons[0,0] icons[14,0]
+		req:canClicks >= 1
+	*canAchieveTwo
+		name:Gotten Lucky Yet?
+		desc:Click 10 ? Cans.
+		icon:icons[0,0] icons[14,0]
+		req:canClicks >= 10
+	*canAchieveThree
+		name:The Long Game
+		desc:Click 100 ? Cans.
+		icon:icons[0,0] icons[14,0]
+		req:canClicks >= 100
+	*yashichievOne
+		name:Never Forget Your First
+		desc:Earn your first Yashichi.
+		icon:icons[0,0] icons[6,0]
+		req:(yashichi:earned) >= 1
+		on earn:show yashichi
 
 Shinies
+	*questionCan
+		icon:icons[0,0] icons[14,0]
+		frequency:120
+		//frequency:5
+		movement:anywhere growShrink
+		duration:30
+		on click:
+			yield 1 canClick
+			if (canClicks = 3) toast The ? Can reveals a new upgrade.
+			if (canClicks = 10) toast The ? Can reveals a new upgrade.
+			if (canClicks = 20) toast The ? Can reveals a new upgrade.
+			/*
+			if (chance(10%) and timeUnlock=0 and roll>=10)
+				toast The ? Can reveals a new upgrade.
+				yield timeUnlock
+			else if (chance(10%) and oilUnlock=0 and timeUnlock=1 and roll>=10)
+				toast The ? Can reveals a new upgrade.
+				yield oilUnlock
+			else if (chance(10%) and bondUnlock=0 and timeUnlock=1 and oilUnlock=1 and roll>=10)
+				toast The ? Can reveals a new upgrade.
+				yield bondUnlock
+			else if (chance(5%) and enkerUnlock=0 and (metalMan>=10, airMan>=10, bubbleMan>=10, quickMan>=10, crashMan>=10, flashMan>=10, heatMan>=10, woodMan>=10))
+				toast The ? Can reveals a new upgrade.
+				yield enkerUnlock
+			else if (chance(10%) and quakeUnlock=0 and rush>=10)
+				toast The ? Can reveals a new upgrade.
+				yield quakeUnlock
+			else if (chance(5%) and quintUnlock=0 and protoMan>=10)
+				toast The ? Can reveals a new upgrade.
+				yield quintUnlock
+			else if (chance(10%) and vesperUnlock=0 and quakeWoman>=1 and protoMan>=25)
+				toast The ? Can reveals a new upgrade.
+				yield vesperUnlock
+			*/
+			else if (chance(15%) and canUpgradeThree=1)
+				toast The ? Can grants you 1 Yashichi.
+				yield 1 yashichi
+			else if (chance(10%))
+				toast The ? Can grants you 1 Yashichi.
+				yield 1 yashichi
+			else
+				$amount=max(100,random(zenny:ps*60*2,zenny:ps*60*5))
+				toast The ? Can grants you<//><b>[$amount] Zenny</b>!
+				yield $amount zenny
+				//yield $amount canzpt
+			end
+		end
 
 Includes
 	*include robotMaster %name %title="Man" %textColor="d82800" %code="DWN." %number %flavor %icon %z %p %increase="115" %cost
@@ -160,6 +267,18 @@ Includes
 			end
 			cost increase:[%increase]%
 			cost:[%cost] zenny
+	*include zennyUpgrade %id %name %boost %boostPercent %flavor %req %cost
+		*zennyUpgrade[%id]
+			name:[%name]
+			desc:Boosts manual Zenny Production by [%boostPercent]%.<q>[%flavor]</q>
+			icon:icons[0,0] icons[13,0]
+			req:[%req]
+			passive:
+				if (yashichiBuster=0)
+					multiply zenny yield of makeZenny by [%boost]
+				end
+			end
+			cost:[%cost]
 	*include unlockUpgrade %robot %name %title="Man" %flavor %icon %req %boost %cost
 		*[%robot]Unlock
 			name:[%name]
@@ -245,3 +364,39 @@ Includes
 			desc:Upgrade [%robot] [%title] <b>100</b> times[%flavor100]
 			icon:icons[0,0] icons[[%icon]]
 			req:100 [%robot][%title]
+	*include gearBoost %boost %boostPlus
+		passive:
+			//multiply yield of roll by [%boostPlus]
+			//multiply yield of cutMan by [%boost]
+			//multiply yield of gutsMan by [%boost]
+			//multiply yield of iceMan by [%boost]
+			//multiply yield of bombMan by [%boost]
+			multiply yield of fireMan by [%boost]
+			//multiply yield of elecMan by [%boost]
+			//multiply yield of timeMan by [%boost]
+			//multiply yield of oilMan by [%boost]
+			//multiply yield of bondMan by [%boost]
+			multiply yield of megaMan by [%boostPlus]
+			//multiply yield of metalMan by [%boost]
+			//multiply yield of airMan by [%boost]
+			//multiply yield of bubbleMan by [%boost]
+			//multiply yield of quickMan by [%boost]
+			//multiply yield of crashMan by [%boost]
+			//multiply yield of flashMan by [%boost]
+			//multiply yield of heatMan by [%boost]
+			//multiply yield of woodMan by [%boost]
+			//multiply yield of enker by [%boost]
+			//multiply yield of rush by [%boostPlus]
+			//multiply yield of quakeWoman by [%boostPlus]
+			//multiply yield of needleMan by [%boost]
+			//multiply yield of magnetMan by [%boost]
+			//multiply yield of geminiMan by [%boost]
+			//multiply yield of hardMan by [%boost]
+			//multiply yield of topMan by [%boost]
+			//multiply yield of snakeMan by [%boost]
+			//multiply yield of sparkMan by [%boost]
+			//multiply yield of shadowMan by [%boost]
+			//multiply yield of protoMan by [%boostPlus]
+			//multiply yield of quint by [%boost]
+			//multiply yield of vesperWoman by [%boostPlus]
+		end
