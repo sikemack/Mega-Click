@@ -183,14 +183,14 @@ Includes
 			desc:Boosts [%robot] [%title]'s production by 100%.<q>[%flavor1]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:25 [%robot][%title]
-			passive:multiply yield of [%name][%title] by 2
+			passive:multiply yield of [%robot][%title] by 2
 			cost:[%cost1] zenny
 		*[%robot]Upgrade50
 			name:[%name2]
 			desc:Boosts [%robot] [%title]'s production by 100%.<q>[%flavor2]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:50 [%robot][%title]
-			passive:multiply yield of [%name][%title] by 2
+			passive:multiply yield of [%robot][%title] by 2
 			cost:[%cost2] publicity
 	*inlude specialWeapon %robot %name %title="Man" %flavor %icon %target %targetTitle="Man"
 		*[%robot]Weapon
@@ -199,7 +199,7 @@ Includes
 			icon:icons[1,0] icons[[%icon]]
 			req:75 [%robot][%title], 1 MegaMan
 			passive:
-				multiply yield of [%name][%title] by 2
+				multiply yield of [%robot][%title] by 2
 				multiply yield of MegaMan by 2
 				//multiply cost of [%target][%targetTitle] by .95
 			end
