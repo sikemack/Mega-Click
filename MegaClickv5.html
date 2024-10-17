@@ -133,7 +133,7 @@ Upgrades
 	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 gear" %boost="3" %cost="20"]
 	[i:gearUpgrade %name="Fire" %flavor="Smells like smoke." %icon="4,2" %req="25" %cost="100000"]
 	[i:robotUpgrades %robot="Fire" %name1="Fireproofing" %name2="Waterproofing" %flavor1="Once again, you really should have had this earlier. Should prevent any more accidental fires." %flavor2="You've achieved enough fame to get Fire Man burning too hot to be extinguished." %icon="4,2" %cost1="200000" %cost2="120000"]
-	[i:specialWeapon %robot="Fire" %name="Fire Storm" %flavor="Fire Storm creates a ring of fire and a powerful fireball, while also creating a major stage hazard." %icon="4,2" %target="Bomb"]
+	//[i:specialWeapon %robot="Fire" %name="Fire Storm" %flavor="Fire Storm creates a ring of fire and a powerful fireball, while also creating a major stage hazard." %icon="4,2" %target="Bomb"]
 	//Mega Man
 	[i:unlockUpgrade %robot="Mega" %name="Weapon Copy System" %flavor="Allows your star to mimic the weapons of the Robot Masters. Oh wait, the star. Knew we were forgetting something." %icon="0,1" %req="50 FireMan" %boost="7" %cost="250000000"]
 	[i:gearUpgrade %name="Mega" %flavor="Feels like you've accomplished something." %icon="0,1" %req="25" %cost="2500000000"]
@@ -192,6 +192,7 @@ Includes
 			req:50 [%robot][%title]
 			passive:multiply yield of [%robot][%title] by 2
 			cost:[%cost2] publicity
+	/*
 	*inlude specialWeapon %robot %name %title="Man" %flavor %icon %target %targetTitle="Man"
 		*[%robot]Weapon
 			name:[%name]
@@ -204,6 +205,7 @@ Includes
 				//multiply cost of [%target][%targetTitle] by .95
 			end
 			cost:1 yashichi
+	*/
 	*include robotResources %name %title="Man" %icon
 		*[%name]zpt
 			name:[%name] [%title]'s Earned Zenny
