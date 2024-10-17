@@ -235,8 +235,9 @@ Shinies
 			else if (chance(10%) and vesperUnlock=0 and quakeWoman>=1 and protoMan>=25)
 				toast The ? Can reveals a new upgrade.
 				yield vesperUnlock
-			*/
 			else if (chance(15%) and canUpgradeThree=1)
+			*/
+			if (chance(15%) and canUpgradeThree=1)
 				toast The ? Can grants you 1 Yashichi.
 				yield 1 yashichi
 			else if (chance(10%))
