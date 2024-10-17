@@ -100,7 +100,8 @@ Resources
 		icon:icons[0,0] icons[3,0]
 		always hidden
 		show earned
-	[i:robotResources %name="Fire" %icon=4,2]
+	[i:robotResources %name="Fire" %icon="4,2"]
+	[i:robotResources %name="Mega" %icon="0,1"]
 
 Buildings
 	*timer
@@ -125,13 +126,21 @@ Buildings
 		cost increase:135%
 		cost:25 zenny
 	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z="2.5" %p="0.04" %cost="20"]
+	[i:robotMaster %name="Mega" %textColor="0070e8" %code="DLN." %number="001" %flavor="The star of the show." %icon="0,1" %z="5000" %p="0.1" %cost="950000"]
 
 Upgrades
+	//Fire Man
 	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 gear" %boost="3" %cost="20"]
-	[i:gearUpgrade %name="Fire" %flavor="A special Gear variant branded around Fire Man! Smells like smoke." %icon="4,2" %req="25" %cost="100000"]
+	[i:gearUpgrade %name="Fire" %flavor="Smells like smoke." %icon="4,2" %req="25" %cost="100000"]
+	[i:robotUpgrades %robot="Fire" %name1="Fireproofing" %name2="Waterproofing" %flavor1="Once again, you really should have had this earlier. Should prevent any more accidental fires." %flavor2="You've achieved enough fame to get Fire Man burning too hot to be extinguished." %icon="4,2" %cost1="200000" %cost2="120000"]
+	[i:specialWeapon %robot="Fire" %name="Fire Storm" %flavor="Fire Storm creates a ring of fire and a powerful fireball, while also creating a major stage hazard." %icon="4,2" %target="Bomb"]
+	//Mega Man
+	[i:unlockUpgrade %robot="Mega" %name="Weapon Copy System" %flavor="Allows your star to mimic the weapons of the Robot Masters. Oh wait, the star. Knew we were forgetting something." %icon="0,1" %req="50 FireMan" %boost="7" %cost="250000000"]
+	[i:gearUpgrade %name="Mega" %flavor="Feels like you've accomplished something." %icon="0,1" %req="25" %cost="2500000000"]
 
 Achievements
 	[i:robotAchievements %robot="Fire" %name10="Heat Miser" %name25="Mr. Sun" %name50="Green Christmas" %name75="12000°" %name100="Starting to Melt" %icon="4,2"]
+	[i:robotAchievements %robot="Mega" %name10="Rockin'" %name25="Rollin'" %name50="Bustin'" %name75="Mega" %name100="Man" %icon="0,1"]
 
 Shinies
 
@@ -163,46 +172,73 @@ Includes
 	*include gearUpgrade %name %title="Man" %flavor %icon %req %cost
 		*[%name]Gear
 			name:[%name] Gear
-			desc:Boosts [%name] [%title]'s production by 30%.<q>[%flavor]</q>
+			desc:Boosts [%name] [%title]'s production by 30%.<q>A special Gear variant branded around [%name] [%title]![%flavor]</q>
 			icon:icons[2,0] icons[0,0] icons[[%icon]]
 			req:[%req] gears, 15 [%name][%title]
 			passive:multiply yield of [%name][%title] by 1.3
 			cost:[%cost] zenny
+	*include robotUpgrades %robot %name1 %name2 %title="Man" %flavor1 %flavor2 %icon %cost1 %cost2
+		*[%robot]Upgrade25
+			name:[%name1]
+			desc:Boosts [%robot] [%title]'s production by 100%.<q>[%flavor1]</q>
+			icon:icons[0,0] icons[[%icon]]
+			req:25 [%robot][%title]
+			passive:multiply yield of [%name][%title] by 2
+			cost:[%cost1] zenny
+		*[%robot]Upgrade50
+			name:[%name2]
+			desc:Boosts [%robot] [%title]'s production by 100%.<q>[%flavor2]</q>
+			icon:icons[0,0] icons[[%icon]]
+			req:50 [%robot][%title]
+			passive:multiply yield of [%name][%title] by 2
+			cost:[%cost2] publicity
+	*inlude specialWeapon %robot %name %title="Man" %flavor %icon %target %targetTitle="Man"
+		*[%robot]Weapon
+			name:[%name]
+			desc:Boosts [%robot] [%title] and Mega Man's production by 100%.<q>[%flavor]</q>
+			icon:icons[1,0] icons[[%icon]]
+			req:75 [%robot][%title], 1 MegaMan
+			passive:
+				multiply yield of [%name][%title] by 2
+				multiply yield of MegaMan by 2
+				//multiply cost of [%target][%targetTitle] by .95
+			end
+			cost:1 yashichi
 	*include robotResources %name %title="Man" %icon
 		*[%name]zpt
 			name:[%name] [%title]'s Earned Zenny
 			desc:How much Zenny [%name] [%title] has earned.
 			icon:icons[0,0] icons[[%icon]] icons[4,0]
-			always hidden
+			//always hidden
 			show earned
 		*[%name]ppt
 			name:[%name] [%title]'s Earned Publicity
 			desc:How much Publicity [%name] [%title] has earned.
 			icon:icons[0,0] icons[[%icon]] icons[3,0]
-			always hidden
+			//always hidden
 			show earned
 	*include robotAchievements %robot %title="Man" %name10 %name25 %name50 %name75 %name100 %flavor10="." %flavor25="." %flavor50="." %flavor75="." %flavor100="." %icon
-		*[%robot]10
+		*[%robot]Achiev10
 			name:[%name10]
 			desc:Upgrade [%robot] [%title] <b>10</b> times[%flavor10]
 			icon:icons[0,0] icons[[%icon]]
 			req:10 [%robot][%title]
-		*[%robot]25
+		*[%robot]Achiev25
 			name:[%name25]
 			desc:Upgrade [%robot] [%title] <b>25</b> times[%flavor25]
 			icon:icons[0,0] icons[[%icon]]
 			req:25 [%robot][%title]
-		*[%robot]50
+		*[%robot]Achiev50
 			name:[%name50]
 			desc:Upgrade [%robot] [%title] <b>50</b> times[%flavor50]
 			icon:icons[0,0] icons[[%icon]]
 			req:50 [%robot][%title]
-		*[%robot]75
+		*[%robot]Achiev75
 			name:[%name75]
 			desc:Upgrade [%robot] [%title] <b>75</b> times[%flavor75]
 			icon:icons[0,0] icons[[%icon]]
 			req:75 [%robot][%title]
-		*[%robot]100
+		*[%robot]Achiev100
 			name:[%name100]
 			desc:Upgrade [%robot] [%title] <b>100</b> times[%flavor100]
 			icon:icons[0,0] icons[[%icon]]
