@@ -128,7 +128,7 @@ Buildings
 		cost increase:135%
 		cost:25 zenny
 	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z="2.5" %p="0.04" %cost="20"]
-	[i:robotMaster %name="Mega" %textColor="0070e8" %code="DLN." %number="001" %flavor="The star of the show." %icon="0,1" %z="5000" %p="0.1" %increase="135"%cost="950000"]
+	[i:robotMaster %name="Mega" %textColor="0070e8" %code="DLN." %number="001" %flavor="The star of the show." %icon="0,1" %z="5000" %p="0.1" %increase="135" %cost="950000"]
 
 Upgrades
 	//Zenny Buster
@@ -179,6 +179,26 @@ Upgrades
 Achievements
 	[i:robotAchievements %robot="Fire" %name10="Heat Miser" %name25="Mr. Sun" %name50="Green Christmas" %name75="12000°" %name100="Starting to Melt" %icon="4,2"]
 	[i:robotAchievements %robot="Mega" %name10="Rockin'" %name25="Rollin'" %name50="Bustin'" %name75="Mega" %name100="Man" %icon="0,1"]
+	*stickingAround
+		name:Sticking Around
+		desc:Play for <b>1</b> minute.
+		icon:icons[0,0] icons[6,2]
+		req:60 counter
+	*howFar
+		name:How Far Are You?
+		desc:Play for <b>30</b> minutes.
+		icon:icons[0,0] icons[6,2]
+		req:1800 counter
+	*gladTo
+		name:We're Glad To Have You
+		desc:Play for <b>1</b> hour.
+		icon:icons[0,0] icons[6,2]
+		req:3600 counter
+	*thanksFor
+		name:Thanks For Playing!
+		desc:Play for <b>1</b> day.
+		icon:icons[0,0] icons[6,2]
+		req:86400 counter
 	*canAchieveOne
 		name:Questionable Contents
 		desc:Click your first ? Can.
