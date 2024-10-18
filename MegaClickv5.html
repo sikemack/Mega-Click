@@ -120,7 +120,7 @@ Buildings
 		cost:0 zenny
 	*gear|gears
 		name:Gear|Gears
-		desc:A basic promotional tool. Doesn't reel in any cash by itself, but once you hire others on...</>Your [?(this=0)|[this] Gears are][?(this=1)|[this] Gear is][?(this>1)|[this] Gears are] earning <b>[gearppt:ps]</b> Publicity each second. <b>[gearppt]</b> Publicity earned so far.
+		desc:A basic promotional tool. Doesn't reel in any cash by itself, but once you hire others on...</>Your [?(this=0)|<b>[this]</b> Gears are][?(this=1)|<b>[this]</b> Gear is][?(this>1)|<b>[this]</b> Gears are] earning <b>[gearppt:ps]</b> Publicity each second. <b>[gearppt]</b> Publicity earned so far.
 		icon:icons[0,0] icons[3,0]
 		on tick:yield 0.05 publicity
 		on tick:yield 0.05 gearppt
@@ -142,7 +142,7 @@ Upgrades
 	[i:zennyUpgrade %id="8" %name="Retro Buster Design" %boost="2" %boostPercent="100" %flavor="Y'know, that newer design is nice and all, but retro is where it's at. Why do you think we're using this art style? The Buster is re-revamped with an old-school look." %req="have zennyUpgrade7, 1000000000 zenny" %cost="2000000000 zenny"]
 	*yashichiBuster
 		name:Yashichi Buster
-		desc:Locks manual Zenny production to 1/3 of your Zenny Per Second.<q>Your Zenny Buster's final form, you won't need to upgrade it ever again.</q>
+		desc:Locks manual Zenny production to <b>1/3</b> of your Zenny Per Second.<q>Your Zenny Buster's final form, you won't need to upgrade it ever again.</q>
 		icon:icons[1,0] icons[13,0]
 		req:have zennyUpgrade8, 1000000000000 zenny
 		cost:1 yashichi
@@ -157,21 +157,21 @@ Upgrades
 	//? Cans
 	*canUpgradeOne
 		name:Frequent Shipments
-		desc:? Cans will appear 20% faster.
+		desc:? Cans will appear <b>20%</b> faster.
 		icon:icons[0,0] icons[14,0]
 		req:3 questionCan:clicks
 		passive:multiply frequency of questionCan by 0.8
 		cost:10000 zenny
 	*canUpgradeTwo
 		name:? Can Coating
-		desc:Treated with a special chemical solution, ? Cans will last 20% longer before disappearing.
+		desc:Treated with a special chemical solution, ? Cans will last <b>20%</b> longer before disappearing.
 		icon:icons[0,0] icons[14,0]
 		req:10 questionCan:clicks
 		passive:multiply duration of questionCan by 1.2
 		cost:1000000 zenny
 	*canUpgradeThree
 		name:Rigged Odds
-		desc:Through a bit of probability manipulation, the odds of a ? Can yielding a Yashichi are 5% higher.
+		desc:Through a bit of probability manipulation, the odds of a ? Can yielding a Yashichi are <b>5%</b> higher.
 		icon:icons[1,0] icons[14,0]
 		req:20 questionCan:clicks, yashichievOne=1
 		cost:1 yashichi
@@ -206,12 +206,12 @@ Achievements
 		req:canClicks >= 1
 	*canAchieveTwo
 		name:Gotten Lucky Yet?
-		desc:Click 10 ? Cans.
+		desc:Click <b>10</b> ? Cans.
 		icon:icons[0,0] icons[14,0]
 		req:canClicks >= 10
 	*canAchieveThree
 		name:The Long Game
-		desc:Click 100 ? Cans.
+		desc:Click <b>100</b> ? Cans.
 		icon:icons[0,0] icons[14,0]
 		req:canClicks >= 100
 	*yashichievOne
@@ -275,7 +275,7 @@ Includes
 	*include robotMaster %name %title="Man" %textColor="d82800" %code="DWN." %number %flavor %icon %z %p %increase="115" %cost
 		*[%name][%title]
 			name:[%name] [%title]
-			desc:<b><#[%textColor]>[%code] [%number]</#></></b>Currently at Level [this], [%name] [%title] is earning <b>[[%name]zpt:ps]</b> Zenny and <b>[[%name]ppt:ps]</b> Publicity each second.</><b>[[%name]zpt]</b> Zenny and <b>[[%name]ppt]</b> Publicity earned so far.<q>[%flavor]</q>
+			desc:<b><#[%textColor]>[%code] [%number]</#></></b>Currently at Level <b>[this]</b>, [%name] [%title] is earning <b>[[%name]zpt:ps]</b> Zenny and <b>[[%name]ppt:ps]</b> Publicity each second.</><b>[[%name]zpt]</b> Zenny and <b>[[%name]ppt]</b> Publicity earned so far.<q>[%flavor]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:have [%name]Unlock
 			on tick:
@@ -289,7 +289,7 @@ Includes
 	*include zennyUpgrade %id %name %boost %boostPercent %flavor %req %cost
 		*zennyUpgrade[%id]
 			name:[%name]
-			desc:Boosts manual Zenny Production by [%boostPercent]%.<q>[%flavor]</q>
+			desc:Boosts manual Zenny Production by <b>[%boostPercent]%</b>.<q>[%flavor]</q>
 			icon:icons[0,0] icons[13,0]
 			req:[%req]
 			passive:
@@ -301,7 +301,7 @@ Includes
 	*include unlockUpgrade %robot %name %title="Man" %flavor %icon %req %boost %cost
 		*[%robot]Unlock
 			name:[%name]
-			desc:Boosts Gear production by [%boost]0%, and unlocks [%robot] [%title].<q>[%flavor]</q>
+			desc:Boosts Gear production by <b>[%boost]0%</b>, and unlocks [%robot] [%title].<q>[%flavor]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:[%req]
 			passive:
@@ -312,7 +312,7 @@ Includes
 	*include gearUpgrade %name %title="Man" %flavor %icon %req %cost
 		*[%name]Gear
 			name:[%name] Gear
-			desc:Boosts [%name] [%title]'s production by 30%.<q>A special Gear variant branded around [%name] [%title]![%flavor]</q>
+			desc:Boosts [%name] [%title]'s production by <b>30%</b>.<q>A special Gear variant branded around [%name] [%title]![%flavor]</q>
 			icon:icons[2,0] icons[0,0] icons[[%icon]]
 			req:[%req] gears, 15 [%name][%title]
 			passive:multiply yield of [%name][%title] by 1.3
@@ -320,14 +320,14 @@ Includes
 	*include robotUpgrades %robot %name1 %name2 %title="Man" %flavor1 %flavor2 %icon %cost1 %cost2
 		*[%robot]Upgrade25
 			name:[%name1]
-			desc:Boosts [%robot] [%title]'s production by 100%.<q>[%flavor1]</q>
+			desc:Boosts [%robot] [%title]'s production by <b>100%</b>.<q>[%flavor1]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:25 [%robot][%title]
 			passive:multiply yield of [%robot][%title] by 2
 			cost:[%cost1] zenny
 		*[%robot]Upgrade50
 			name:[%name2]
-			desc:Boosts [%robot] [%title]'s production by 100%.<q>[%flavor2]</q>
+			desc:Boosts [%robot] [%title]'s production by <b>100%</b>.<q>[%flavor2]</q>
 			icon:icons[0,0] icons[[%icon]]
 			req:50 [%robot][%title]
 			passive:multiply yield of [%robot][%title] by 2
@@ -335,7 +335,7 @@ Includes
 	*include specialWeapon %robot %name %title="Man" %flavor %icon %target %targetTitle
 		*[%robot]Weapon
 			name:[%name]
-			desc:Boosts [%robot] [%title] and Mega Man's production by 100%.<q>[%flavor]</q>
+			desc:Boosts [%robot] [%title] and Mega Man's production by <b>100%</b>.<q>[%flavor]</q>
 			icon:icons[1,0] icons[[%icon]]
 			req:75 [%robot][%title], 1 MegaMan
 			passive:
