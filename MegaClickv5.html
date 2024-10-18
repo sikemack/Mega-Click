@@ -104,6 +104,7 @@ Resources
 		icon:icons[0,0] icons[3,0]
 		always hidden
 		show earned
+	[i:pinkResources %name="Roll" %icon="1,1"]
 	[i:robotResources %name="Fire" %icon="4,2"]
 	[i:robotResources %name="Mega" %icon="0,1"]
 
@@ -127,7 +128,8 @@ Buildings
 		[i:gearBoost %boost="1.05" %boostPlus="1.07"]
 		cost increase:135%
 		cost:25 zenny
-	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z="2.5" %p="0.04" %cost="20"]
+	[i:pinkMaster %name="Roll" %textColor="0070e8" %code="DLN." %number="002" %flavor="One of Dr. Light's first creations, she'll be indispensable moving forward in the production." %icon="1,1" %z="0.7" %p="0.1" %increase="135" %cost="100"]
+	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z="2.5" %p="0.04" %cost="3000"]
 	[i:robotMaster %name="Mega" %textColor="0070e8" %code="DLN." %number="001" %flavor="The star of the show." %icon="0,1" %z="5000" %p="0.1" %increase="135" %cost="950000"]
 
 Upgrades
@@ -158,8 +160,49 @@ Upgrades
 	[i:gearUpgrade %id="3" %name="Faster Gears" %boost="1.1" %boostPercent="10" %flavor="Fame can buy many things. Faster gears, for instance." %req="50" %cost="2500000 publicity"]
 	[i:gearUpgrade %id="4" %name="Mechanical Singularity" %boost="1.15" %boostPercent="15" %flavor="Your Gears approach a new Zenith." %req="75" %cost="15000000000 zenny"]
 	[i:gearUpgrade %id="5" %name="The Aforementioned Zenith" %boost="1.3" %boostPercent="30" %flavor="But perhaps we can still go higher?" %req="75" %cost="30000000000 publicity"]
+	//Roll
+	[i:pinkUnlock %robot="Roll" %name="Broom" %flavor="A handy tool to have around a theater." %icon="1,1" %req="50 zenny" %boost="7" %cost="100"]
+	*RollUpgrade10
+		name:Heelies
+		desc:Boosts Roll's production by <b>100%</b>.<q>Helps Roll roll around the theater faster.</q>
+		icon:icons[0,0] icons[1,1]
+		req:10 Roll
+		passive:multiply yield of Roll by 2
+		cost:800 zenny
+	[i:pinkVariant %name="Roll" %flavor="It smells nicer than the usual kind." %icon="1,1" %req="15" %cost="10000"
+	*RollUpgrade25
+		name:Roll Buster
+		desc:Boosts Roll's production by <b>1%</b> of your total production per second.<q>Roll is outfitted with her own Buster, helping her keep ne'er-do-wells out of the theater.</q>
+		icon:icons[0,0] icons[1,1]
+		req:25 Roll
+		passive:
+			increase zenny yield of Roll by 1poz
+			increase rollzpt yield of Roll by 1poz
+			increase publicity yield of Roll by 1pop
+			increase rollppt yield of Roll by 1pop
+		end
+		cost:20000 zenny
+	*RollUpgrade50
+		name:New Dress
+		desc:Boosts Roll's production by <b>100%</b>.<q>Costuming cashes in on Publicity and gets Roll a new dress. Doesn't she look spiffy!</q>
+		icon:icons[0,0] icons[4,1]
+		req:50 Roll
+		passive:multiply yield of Roll by 2
+		cost:50000 publicity
+	*RollWeapon
+		name:Roll Swing
+		desc:Boosts Roll's production by <b>2%</b> of your total production per second.<q>While a buster is well and good, nothing works quite so well as a trusty broom.</q>
+		icon:icons[1,0] icons[4,1]
+		req:have RollUpgrade50, 75 Roll
+		passive:
+			increase zenny yield of Roll by (2*1poz)
+			increase rollzpt yield of Roll by (2*1poz)
+			increase publicity yield of Roll by (2*1pop)
+			increase rollppt yield of Roll by (2*1pop)
+		end
+		cost:1 yashichi
 	//Fire Man
-	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 gear" %boost="3" %cost="20"]
+	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="10 Roll" %boost="3" %cost="3000"]
 	[i:gearVariant %name="Fire" %flavor="Smells like smoke." %icon="4,2" %req="25" %cost="100000"]
 	[i:robotUpgrades %robot="Fire" %name1="Fireproofing" %name2="Waterproofing" %flavor1="Once again, you really should have had this earlier. Should prevent any more accidental fires." %flavor2="You've achieved enough fame to get Fire Man burning too hot to be extinguished." %icon="4,2" %cost1="200000" %cost2="120000"]
 	[i:specialWeapon %robot="Fire" %name="Fire Storm" %flavor="Fire Storm creates a ring of fire and a powerful fireball, while also creating a major stage hazard." %icon="4,2" %target="Bomb"]
@@ -195,6 +238,7 @@ Achievements
 	[i:gearAchievement %id="50" %name="Gadget"]
 	[i:gearAchievement %id="75" %name="Force To Reckon With"]
 	[i:gearAchievement %id="100" %name="The Machine"]
+	[i:pinkAchievements %robot="Roll" %name10="We're No Strangers To Love" %name25="You Know The Rules" %name50="And So Do I" %name75="A Full Commitment's" %name100="What I'm Thinking Of" %icon="1,1"]
 	[i:robotAchievements %robot="Fire" %name10="Heat Miser" %name25="Mr. Sun" %name50="Green Christmas" %name75="12000°" %name100="Starting to Melt" %icon="4,2"]
 	[i:robotAchievements %robot="Mega" %name10="Rockin'" %name25="Rollin'" %name50="Bustin'" %name75="Mega" %name100="Man" %icon="0,1"]
 	*stickingAround
@@ -304,6 +348,20 @@ Includes
 			end
 			cost increase:[%increase]%
 			cost:[%cost] zenny
+	*include pinkMaster %name %textColor="d82800" %code="DWN." %number %flavor %icon %z %p %increase="115" %cost
+		*[%name]
+			name:[%name]
+			desc:<b><#[%textColor]>[%code] [%number]</#></></b>Currently at Level <b>[this]</b>, [%name] is earning <b>[[%name]zpt:ps]</b> Zenny and <b>[[%name]ppt:ps]</b> Publicity each second.</><b>[[%name]zpt]</b> Zenny and <b>[[%name]ppt]</b> Publicity earned so far.<q>[%flavor]</q>
+			icon:icons[0,0] icons[[%icon]]
+			req:have [%name]Unlock
+			on tick:
+				yield [%z] zenny
+				yield [%z] [%name]zpt
+				yield [%p] publicity
+				yield [%p] [%name]ppt
+			end
+			cost increase:[%increase]%
+			cost:[%cost] zenny
 	*include zennyUpgrade %id %name %boost %boostPercent %flavor %req %cost
 		*zennyUpgrade[%id]
 			name:[%name]
@@ -323,7 +381,7 @@ Includes
 			icon:icons[0,0] icons[3,0]
 			req:[%req] gears
 			passive:
-				//multiply yield of Roll by [%boost]
+				multiply yield of Roll by [%boost]
 				//multiply yield of CutMan by [%boost]
 				//multiply yield of GutsMan by [%boost]
 				//multiply yield of IceMan by [%boost]
@@ -369,6 +427,17 @@ Includes
 				grant 1 [%robot][%title]
 			end
 			cost:[%cost] zenny
+	*include pinkUnlock %robot %name %flavor %icon %req %boost %cost
+		*[%robot]Unlock
+			name:[%name]
+			desc:Boosts Gear production by <b>[%boost]0%</b>, and unlocks [%robot].<q>[%flavor]</q>
+			icon:icons[0,0] icons[[%icon]]
+			req:[%req]
+			passive:
+				multiply yield of gears by 1.[%boost]
+				grant 1 [%robot]
+			end
+			cost:[%cost] zenny
 	*include gearVariant %name %title="Man" %flavor %icon %req %cost
 		*[%name]Gear
 			name:[%name] Gear
@@ -376,6 +445,14 @@ Includes
 			icon:icons[2,0] icons[0,0] icons[[%icon]]
 			req:[%req] gears, 15 [%name][%title]
 			passive:multiply yield of [%name][%title] by 1.3
+			cost:[%cost] zenny
+	*include pinkVariant %name %flavor %icon %req %cost
+		*[%name]Gear
+			name:[%name] Gear
+			desc:Boosts [%name]'s production by <b>30%</b>.<q>A special Gear variant branded around [%name]![%flavor]</q>
+			icon:icons[2,0] icons[0,0] icons[[%icon]]
+			req:[%req] gears, 15 [%name]
+			passive:multiply yield of [%name] by 1.3
 			cost:[%cost] zenny
 	*include robotUpgrades %robot %name1 %name2 %title="Man" %flavor1 %flavor2 %icon %cost1 %cost2
 		*[%robot]Upgrade25
@@ -417,6 +494,19 @@ Includes
 			icon:icons[2,0] icons[0,0] icons[[%icon]]
 			always hidden
 			show earned
+	*include pinkResources %name %icon
+		*[%name]zpt
+			name:[%name]'s Earned Zenny
+			desc:How much Zenny [%name] has earned.
+			icon:icons[0,0] icons[[%icon]] icons[4,0]
+			always hidden
+			show earned
+		*[%name]ppt
+			name:[%name]'s Earned Publicity
+			desc:How much Publicity [%name] has earned.
+			icon:icons[2,0] icons[0,0] icons[[%icon]]
+			always hidden
+			show earned
 	*include gearAchievement %id %name
 		*gearAchiev[%id]
 			name:[%name]
@@ -449,9 +539,35 @@ Includes
 			desc:Upgrade [%robot] [%title] <b>100</b> times[%flavor100]
 			icon:icons[0,0] icons[[%icon]]
 			req:100 [%robot][%title]
+	*include pinkAchievements %robot %name10 %name25 %name50 %name75 %name100 %flavor10="." %flavor25="." %flavor50="." %flavor75="." %flavor100="." %icon
+		*[%robot]Achiev10
+			name:[%name10]
+			desc:Upgrade [%robot] <b>10</b> times[%flavor10]
+			icon:icons[0,0] icons[[%icon]]
+			req:10 [%robot]
+		*[%robot]Achiev25
+			name:[%name25]
+			desc:Upgrade [%robot] <b>25</b> times[%flavor25]
+			icon:icons[0,0] icons[[%icon]]
+			req:25 [%robot]
+		*[%robot]Achiev50
+			name:[%name50]
+			desc:Upgrade [%robot] <b>50</b> times[%flavor50]
+			icon:icons[0,0] icons[[%icon]]
+			req:50 [%robot]
+		*[%robot]Achiev75
+			name:[%name75]
+			desc:Upgrade [%robot] <b>75</b> times[%flavor75]
+			icon:icons[0,0] icons[[%icon]]
+			req:75 [%robot]
+		*[%robot]Achiev100
+			name:[%name100]
+			desc:Upgrade [%robot] <b>100</b> times[%flavor100]
+			icon:icons[0,0] icons[[%icon]]
+			req:100 [%robot]
 	*include gearBoost %boost %boostPlus
 		passive:
-			//multiply yield of Roll by [%boostPlus]
+			multiply yield of Roll by [%boostPlus]
 			//multiply yield of CutMan by [%boost]
 			//multiply yield of GutsMan by [%boost]
 			//multiply yield of IceMan by [%boost]
