@@ -146,6 +146,18 @@ Upgrades
 		icon:icons[1,0] icons[13,0]
 		req:have zennyUpgrade8, 1000000000000 zenny
 		cost:1 yashichi
+	//Gears
+	*gearUpgrade1
+		name:Oiled Gears
+		desc:Boosts Gear production by <b>2%</b> for each Gear owned.<q>Reduces friction between your gears, letting them work together more smoothly.</q>
+		icon:icons[0,0] icons[3,0]
+		req:10 gears
+		passive:multiply yield of gears by 1.02*gear
+		cost:1500 zenny
+	[i:gearUpgrade %id="2" %name="Greased Axles" %boost="1.03" %boostPercent="3" %flavor="Same principle." %req="25" %cost="50000 zenny"]
+	[i:gearUpgrade %id="3" %name="Faster Gears" %boost="1.1" %boostPercent="10" %flavor="Fame can buy many things. Faster gears, for instance." %req="50" %cost="2500000 publicity"]
+	[i:gearUpgrade %id="4" %name="Mechanical Singularity" %boost="1.15" %boostPercent="15" %flavor="Your Gears approach a new Zenith." %req="75" %cost="15000000000 zenny"]
+	[i:gearUpgrade %id="5" %name="The Aforementioned Zenith" %boost="1.3" %boostPercent="30" %flavor="But perhaps we can still go higher?" %req="75" %cost="30000000000 publicity"]
 	//Fire Man
 	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="1 gear" %boost="3" %cost="20"]
 	[i:gearUpgrade %name="Fire" %flavor="Smells like smoke." %icon="4,2" %req="25" %cost="100000"]
@@ -177,6 +189,12 @@ Upgrades
 		cost:1 yashichi
 
 Achievements
+	//Gears
+	[i:gearAchievement %id="10" %name="Click Click Click"]
+	[i:gearAchievement %id="25" %name="Fidget"]
+	[i:gearAchievement %id="50" %name="Gadget"]
+	[i:gearAchievement %id="75" %name="Force To Reckon With"]
+	[i:gearAchievement %id="100" %name="The Machine"]
 	[i:robotAchievements %robot="Fire" %name10="Heat Miser" %name25="Mr. Sun" %name50="Green Christmas" %name75="12000°" %name100="Starting to Melt" %icon="4,2"]
 	[i:robotAchievements %robot="Mega" %name10="Rockin'" %name25="Rollin'" %name50="Bustin'" %name75="Mega" %name100="Man" %icon="0,1"]
 	*stickingAround
@@ -298,6 +316,14 @@ Includes
 				end
 			end
 			cost:[%cost]
+	*include gearUpgrade %id %name %boost %boostPercent %flavor %req %cost
+		*gearUpgrade[%id]
+			name:[%name]
+			desc:Boosts the production of all Robots by <b>[%boostPercent]%</b>.<q>[%flavor]</q>
+			icon:icons[0,0] icons[3,0]
+			req:[%req] gears
+			[i:gearBoost %boost="[%boost]" %boostPlus="[%boost]"]
+			cost:[%cost]
 	*include unlockUpgrade %robot %name %title="Man" %flavor %icon %req %boost %cost
 		*[%robot]Unlock
 			name:[%name]
@@ -357,6 +383,12 @@ Includes
 			icon:icons[2,0] icons[0,0] icons[[%icon]]
 			always hidden
 			show earned
+	*include gearAchievement %id %name
+		*gearAchiev[%id]
+			name:[%name]
+			desc:Have <b>[%id]</b> Gears.
+			icon:icons[0,0] icons[3,0]
+			req:[%id] gears
 	*include robotAchievements %robot %title="Man" %name10 %name25 %name50 %name75 %name100 %flavor10="." %flavor25="." %flavor50="." %flavor75="." %flavor100="." %icon
 		*[%robot]Achiev10
 			name:[%name10]
