@@ -244,7 +244,35 @@ Upgrades
 	[i:specialWeapon %robot="Elec" %name="Thunder Beam" %flavor="A high power weapon capable of massive destruction." %icon="5,2" %target="Ice"]
 	//Mega Man
 	[i:unlockUpgrade %robot="Mega" %name="Weapon Copy System" %flavor="Allows your star to mimic the weapons of the Robot Masters. Oh wait, the star. Knew we were forgetting something." %icon="0,1" %req="50 FireMan" %boost="7" %cost="250000000"]
+	*MegaUpgrade10
+		name:Mega Buster
+		desc:Boosts Mega Man and Roll's Production by <b>1%</b> of your total production per second.<q>A powerful arm cannon that fires solar energy, Rock wouldn't be Mega Man without it. We're also upgrading Roll's buster while we're at it.</q>
+		icon:icons[0,0] icons[7,0]
+		req:have RollUpgrade25, 10 MegaMan
+		passive:
+			increase zenny yield of MegaMan by 1poz
+			increase Megazpt yield of MegaMan by 1poz
+			increase publicity yield of MegaMan by 1pop
+			increase Megappt yield of MegaMan by 1pop
+			increase zenny yield of Roll by 1poz
+			increase Rollzpt yield of Roll by 1poz
+			increase publicity yield of Roll by 1pop
+			increase Rollppt yield of Roll by 1pop
+		end
+		cost:500000000 zenny
 	[i:gearVariant %name="Mega" %flavor="Feels like you've accomplished something." %icon="0,1" %req="25" %cost="2500000000"]
+	*MegaUpgrade25
+		name:Magnet Beam
+		desc:Boosts Mega Man's production by <b>1%</b> of your total production per second.<q>A beam capable of creating mid-air platforms, this lets Rock pull off some sick stunts.</q>
+		icon:icons[0,0] icons[8,0]
+		req:have ElecWeapon, 25 MegaMan
+		passive:
+			increase zenny yield of MegaMan by 1poz
+			increase Megazpt yield of MegaMan by 1poz
+			increase publicity yield of MegaMan by 1pop
+			increase Megappt yield of MegaMan by 1pop
+		end
+		cost:5000000000 zenny
 	//? Cans
 	*canUpgradeOne
 		name:Frequent Shipments
@@ -507,7 +535,7 @@ Includes
 	*include gearVariant %name %title="Man" %flavor %icon %req %cost
 		*[%name]Gear
 			name:[%name] Gear
-			desc:Boosts [%name] [%title]'s production by <b>30%</b>.<q>A special Gear variant branded around [%name] [%title]![%flavor]</q>
+			desc:Boosts [%name] [%title]'s production by <b>30%</b>.<q>A special Gear variant branded around [%name] [%title]! [%flavor]</q>
 			icon:icons[2,0] icons[0,0] icons[[%icon]]
 			req:[%req] gears, 15 [%name][%title]
 			passive:multiply yield of [%name][%title] by 1.3
@@ -515,7 +543,7 @@ Includes
 	*include pinkVariant %name %flavor %icon %req %cost
 		*[%name]Gear
 			name:[%name] Gear
-			desc:Boosts [%name]'s production by <b>30%</b>.<q>A special Gear variant branded around [%name]![%flavor]</q>
+			desc:Boosts [%name]'s production by <b>30%</b>.<q>A special Gear variant branded around [%name]! [%flavor]</q>
 			icon:icons[2,0] icons[0,0] icons[[%icon]]
 			req:[%req] gears, 15 [%name]
 			passive:multiply yield of [%name] by 1.3
