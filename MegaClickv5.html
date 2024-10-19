@@ -100,6 +100,9 @@ Resources
 		name:Bolt Timer
 		on tick:
 			if (researchUnlock=1)
+				if (bolts:earned=0)
+					yield 1 bolt
+				end
 				yield 1 this
 				if (this>=(1999))
 					lose (this) this
@@ -340,7 +343,6 @@ Upgrades
 		desc:Unlocks the Laboratory.<q>Dr. Light has agreed to give Rock a weekly allowance, that he can then spend in the Lab!</q>
 		icon:icons[1,0] icons[16,0]
 		req:have act1
-		on earn:grant 1 bolt
 		cost:1 yashichi
 	*testResearch
 		name:Test Research
