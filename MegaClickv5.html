@@ -39,22 +39,22 @@ Layout
 		  contains:Log
 		  class:logcss
 	*store
-		contains:buildings, upgrades, laboratory
+		contains:buildings, upgrades
 		ps:show
 		*buildings
 			contains:BulkDisplay, Buildings
 			header:<t>Robots</t>
 			tooltip origin:left
 		*upgrades
-			contains:Upgrades
+			contains:Upgrades, laboratory
 			header:<t>Upgrades</t>
 			costs:hide
 			names:hide
-		*laboratory
-			contains:tag:research
-			header:<t>Laboratory</t>
-			costs:hide
-			names:hide
+			*laboratory
+				contains:tag:research
+				header:<t>Laboratory</t>
+				costs:hide
+				names:hide
 
 Buttons
 	*makeZenny
