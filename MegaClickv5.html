@@ -96,6 +96,18 @@ Resources
 		icon:icons[0,0] icons[16,0]
 		hidden when 0
 		show earned
+	*boltTimer
+		name:Bolt Timer
+		on tick:
+			if (researchUnlock=1)
+				yield 1 this
+				if (this>=(1999))
+					lose (this) this
+					yield 1 quartz
+				end
+			end
+		end
+		hidden
 	*counter
 		name:Seconds
 		desc:Time functionality may be more implicit now, but still.
@@ -149,9 +161,6 @@ Buildings
 		on tick:
 			yield 1 counter
 			yield 0.00001157407407407407 yashichi
-			if (researchUnlock=1)
-				yield 0.00833333333333333333333333333333 bolts
-			end
 		end
 		on start:log In the year 20XX...</>It is a rare moment of peace in an evolving world.</>A local Director has approached Light Labs with an interesting offer.</>They want to put on a Musical! One based on Mega Man and his adventures, but with a twist.</>They want Rock and his family, and as many of the Robot Masters as are willing, to actually star in the show!</>Now it's your job to assemble the cast, make sure they're at their best, and put on a great show!
 		cost:0 zenny
