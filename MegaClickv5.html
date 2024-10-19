@@ -24,7 +24,7 @@ Layout
 		  contains:Log
 		  class:halfWidth
 	*store
-		contains:buildings, upgrades
+		contains:buildings, upgrades, laboratory
 		ps:show
 		*buildings
 			contains:BulkDisplay, Buildings
@@ -35,11 +35,17 @@ Layout
 			header:<t>Upgrades</t>
 			costs:hide
 			names:hide
+		*laboratory
+			contains:tag:research
+			header:<t>Laboratory</t>
+			costs:hide
+			names:hide
+			hidden
 
 Buttons
 	*makeZenny
 		name:Make Zenny
-		desc:What, did you think screws were accepted as currency everywhere? No, if you're going to put on a production, you'll need cold hard cash.
+		desc:What, did you think Bolts were accepted as currency everywhere? No, if you're going to put on a production, you'll need cold hard cash.
 		on click:
 			if (1poz < 1)
 				yield 1 zenny
@@ -68,6 +74,12 @@ Resources
 		name:Publicity
 		desc:The best gauge for how well the show is going.
 		icon:icons[0,0] icons[3,0]
+		hidden when 0
+		show earned
+	*bolt|bolts
+		name:Bolt|Bolts
+		desc:Useful to research things in the Lab.
+		icon:icons[0,0] icons[16,0]
 		hidden when 0
 		show earned
 	*counter
@@ -120,8 +132,13 @@ Buildings
 		icon:icons[0,0] icons[6,2]
 		always hidden
 		start with:1
-		on tick:yield 1 counter
-		on tick:yield 0.00001157407407407407 yashichi
+		on tick:
+			yield 1 counter
+			yield 0.00001157407407407407 yashichi
+			if (researchUnlock=1)
+				yield 0.00833333333333333333333333333333 bolts
+			end
+		end
 		on start:log Welcome!
 		cost:0 zenny
 	*gear|gears
@@ -294,6 +311,21 @@ Upgrades
 		icon:icons[1,0] icons[14,0]
 		req:20 canClicks, yashichievOne=1
 		cost:1 yashichi
+	//Research
+	*researchUnlock
+		name:Allowance
+		desc:Unlocks the Laboratory.<q>Dr. Light has agreed to give Rock a weekly allowance, that he can then spend in the Lab!</q>
+		icon:icons[1,0] icons[16,0]
+		req:have act1
+		on earn:grant 1 bolt
+		cost:1 yashichi
+	*testResearch
+		name:Test Research
+		desc:PLACEHOLDER
+		icon:icons[1,0] icons[16,0]
+		req:have researchUnlock
+		tag:research
+		cost:1 bolt
 
 Achievements
 	//Clicking
