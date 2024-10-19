@@ -105,7 +105,12 @@ Resources
 		always hidden
 		show earned
 	[i:pinkResources %name="Roll" %icon="1,1"]
+	[i:robotResources %name="Cut" %icon="0,2"]
+	[i:robotResources %name="Guts" %icon="1,2"]
+	[i:robotResources %name="Ice" %icon="2,2"]
+	[i:robotResources %name="Bomb" %icon="3,2"]
 	[i:robotResources %name="Fire" %icon="4,2"]
+	[i:robotResources %name="Elec" %icon="5,2"]
 	[i:robotResources %name="Mega" %icon="0,1"]
 
 Buildings
@@ -128,8 +133,14 @@ Buildings
 		[i:gearBoost %boost="1.05" %boostPlus="1.07"]
 		cost increase:135%
 		cost:25 zenny
+	//Mega Man 1
 	[i:pinkMaster %name="Roll" %textColor="0070e8" %code="DLN." %number="002" %flavor="One of Dr. Light's first creations, she'll be indispensable moving forward in the production." %icon="1,1" %z="0.7" %p="0.1" %increase="135" %cost="100"]
+	[i:robotMaster %name="Cut" %code="DLN." %number="003" %flavor="On stage, he's one of the first Robot Masters our hero will fight. Off stage, he's a top of the line seamstress." %icon="0,2" %z="2.5" %p="0.03" %cost="3000"]
+	[i:robotMaster %name="Guts" %code="DLN." %number="004" %flavor="A strong robot who packs a mean punch, but can also do some heavy lifting behind the scenes." %icon="1,2" %z="2.5" %p="0.04" %cost="3000"]
+	[i:robotMaster %name="Ice" %code="DLN." %number="005" %flavor="This cool character keeps people frozen in their seats, as well as helping make sure nobody overheats under the lights." %icon="2,2" %z="2.5" %p="0.03" %cost="3000"]
+	[i:robotMaster %name="Bomb" %code="DLN." %number="006" %flavor="No show is complete without some minor explosions, and Bomb Man will make them MAJOR." %icon="3,2" %z="2.5" %p="0.03" %cost="3000"]
 	[i:robotMaster %name="Fire" %code="DLN." %number="007" %flavor="Master of pyrotechnics, and well versed fighter, Fire Man will bring the heat to the stage like no other." %icon="4,2" %z="2.5" %p="0.04" %cost="3000"]
+	[i:robotMaster %name="Elec" %code="DLN." %number="008" %flavor="Hailed as one of Dr. Light's greatest creations, he can handle the electricity of nuclear plants. Handling the theater should be no problem, right?" %icon="5,2" %z="2.5" %p="0.04" %cost="3000"]
 	[i:robotMaster %name="Mega" %textColor="0070e8" %code="DLN." %number="001" %flavor="The star of the show." %icon="0,1" %z="5000" %p="0.1" %increase="135" %cost="950000"]
 
 Upgrades
@@ -201,11 +212,36 @@ Upgrades
 			increase Rollppt yield of Roll by (2*1pop)
 		end
 		cost:1 yashichi
+	//Cut Man
+	[i:unlockUpgrade %robot="Cut" %name="Fabric Shears" %flavor="Very useful for making costumes. Maybe you'll even find someone to use them soon." %icon="0,2" %req="10 Roll" %boost="3" %cost="3000"]
+	[i:gearVariant %name="Cut" %flavor="It's oddly sharp." %icon="0,2" %req="25" %cost="100000"]
+	[i:robotUpgrades %robot="Cut" %name1="Sharpened Blades" %name2="Blade Polish" %flavor1="Because clearly they needed to be sharper." %flavor2="Cash in on some of that fame and shine Cut Man up a little." %icon="0,2" %cost1="200000" %cost2="120000"]
+	[i:specialWeapon %robot="Cut" %name="Rolling Cutter" %flavor="Cut Man's powerful ceratanium blade will be a boon both on and off stage." %icon="0,2" %target="Elec"]
+	//Guts Man
+	[i:unlockUpgrade %robot="Guts" %name="Hard Hat" %flavor="During set construction, it's important to keep safe. Might help you bring in a heavy lifter." %icon="1,2" %req="10 Roll" %boost="3" %cost="3000"]
+	[i:gearVariant %name="Guts" %flavor="Makes you feel gutsy." %icon="1,2" %req="25" %cost="100000"]
+	[i:robotUpgrades %robot="Guts" %name1="Blueprints" %name2="Fresh Paint" %flavor1="A set of construction blueprints for Guts Man to ignore." %flavor2="Using some of that hard earned Publicity, Guts Man gets a fresh coat of paint (that he will almost certainly ruin quickly)." %icon="1,2" %cost1="200000" %cost2="120000"]
+	[i:specialWeapon %robot="Guts" %name="Super Arm" %flavor="The sheer lifting power of the Super Arm is sure to ease construction." %icon="1,2" %target="Cut"]
+	//Ice Man
+	[i:unlockUpgrade %robot="Ice" %name="Air Conditioner" %flavor="Helps keep your robot actors from overheating, and makes the theater more amenable for more high maintenance actors." %icon="2,2" %req="10 Roll" %boost="3" %cost="3000"]
+	[i:gearVariant %name="Ice" %flavor="It kinda looks like a snowflake." %icon="2,2" %req="25" %cost="100000"]
+	[i:robotUpgrades %robot="Ice" %name1="Dry Ice" %name2="Aurora Borealis" %flavor1="A basic stage effect, but a chilling one." %flavor2="The lighting designer has outdone themselves, recreating the Northern Lights." %icon="2,2" %cost1="200000" %cost2="120000"]
+	[i:specialWeapon %robot="Ice" %name="Ice Slasher" %flavor="An icy blade clocking in at 200 degrees below zero, it can stop just about anything." %icon="2,2" %target="Fire"]
+	//Bomb Man
+	[i:unlockUpgrade %robot="Bomb" %name="Smoke Bomb" %flavor="One of the simplest tools in a show's arsenal. Of course, it takes an expert to use it well..." %icon="3,2" %req="10 Roll" %boost="3" %cost="3000"]
+	[i:gearVariant %name="Bomb" %flavor="It's softly ticking." %icon="3,2" %req="25" %cost="100000"]
+	[i:robotUpgrades %robot="Bomb" %name1="Longer Fuses" %name2="Fireworks" %flavor1="Designed to let you get further away before detonation." %flavor2="A spectacular Fireworks show capitalizes on your Publicity." %icon="3,2" %cost1="200000" %cost2="120000"]
+	[i:specialWeapon %robot="Bomb" %name="Hyper Bomb" %flavor="Originally built for demolitions, the Hyper Bomb is a powerful explosive. It is also still used for demolitions." %icon="3,2" %target="Guts"]
 	//Fire Man
 	[i:unlockUpgrade %robot="Fire" %name="Fire Extinguisher" %flavor="Why did you not already have this? This is basic fire safety. Now you're ready in case a fire breaks out." %icon="4,2" %req="10 Roll" %boost="3" %cost="3000"]
 	[i:gearVariant %name="Fire" %flavor="Smells like smoke." %icon="4,2" %req="25" %cost="100000"]
 	[i:robotUpgrades %robot="Fire" %name1="Fireproofing" %name2="Waterproofing" %flavor1="Once again, you really should have had this earlier. Should prevent any more accidental fires." %flavor2="You've achieved enough fame to get Fire Man burning too hot to be extinguished." %icon="4,2" %cost1="200000" %cost2="120000"]
 	[i:specialWeapon %robot="Fire" %name="Fire Storm" %flavor="Fire Storm creates a ring of fire and a powerful fireball, while also creating a major stage hazard." %icon="4,2" %target="Bomb"]
+	//Elec Man
+	[i:unlockUpgrade %robot="Elec" %name="Spare Fuses" %flavor="With who you're going to bring in to power the theater, you should be prepared for a blowout." %icon="5,2" %req="10 Roll" %boost="3" %cost="3000"]
+	[i:gearVariant %name="Elec" %flavor="Licking it makes your tongue tingle." %icon="5,2" %req="25" %cost="100000"]
+	[i:robotUpgrades %robot="Elec" %name1="Surge Protectors" %name2="Electric Guitar" %flavor1="While he pumps out a lot of energy, sometimes it's too much for the theater to handle. These will prevent any serious damage." %flavor2="With so much Publicity, it only seemed right to get Elec Man a new Electric Guitar." %icon="5,2" %cost1="200000" %cost2="120000"]
+	[i:specialWeapon %robot="Elec" %name="Thunder Beam" %flavor="A high power weapon capable of massive destruction." %icon="5,2" %target="Ice"]
 	//Mega Man
 	[i:unlockUpgrade %robot="Mega" %name="Weapon Copy System" %flavor="Allows your star to mimic the weapons of the Robot Masters. Oh wait, the star. Knew we were forgetting something." %icon="0,1" %req="50 FireMan" %boost="7" %cost="250000000"]
 	[i:gearVariant %name="Mega" %flavor="Feels like you've accomplished something." %icon="0,1" %req="25" %cost="2500000000"]
@@ -261,7 +297,12 @@ Achievements
 	[i:gearAchievement %id="100" %name="The Machine"]
 	//Mega Man 1
 	[i:pinkAchievements %robot="Roll" %name10="We're No Strangers To Love" %name25="You Know The Rules" %name50="And So Do I" %name75="A Full Commitment's" %name100="What I'm Thinking Of" %icon="1,1"]
+	[i:robotAchievements %robot="Cut" %name10="Safety Scissors" %name25="Cutting Board" %name50="Cutting Room" %name75="Shear Power" %name100="Giant Novelty Scissors" %icon="0,2"]
+	[i:robotAchievements %robot="Guts" %name10="Bulking Up" %name25="Hitting The Weights" %name50="Strongman" %name75="Pure Muscle" %name100="Steroid Free" %icon="1,2"]
+	[i:robotAchievements %robot="Ice" %name10="Ice Cube" %name25="Ice Tray" %name50="Ice Maker" %name75="Freezer" %name100="Deep Freezer" %icon="2,2"]
+	[i:robotAchievements %robot="Bomb" %name10="Cherry Bomb" %name25="Dynamite" %name50="Mine" %name75="TNT" %name100="C4" %icon="3,2"]
 	[i:robotAchievements %robot="Fire" %name10="Heat Miser" %name25="Mr. Sun" %name50="Green Christmas" %name75="12000°" %name100="Starting to Melt" %icon="4,2"]
+	[i:robotAchievements %robot="Elec" %name10="Cell Battery" %name25="AA Battery" %name50="Car Battery" %name75="High Voltage" %name100="Live Wire" %icon="5,2"]
 	[i:robotAchievements %robot="Mega" %name10="Rockin'" %name25="Rollin'" %name50="Bustin'" %name75="Mega" %name100="Man" %icon="0,1"]
 	//Playtime
 	*stickingAround
@@ -407,12 +448,12 @@ Includes
 			req:[%req] gears
 			passive:
 				multiply yield of Roll by [%boost]
-				//multiply yield of CutMan by [%boost]
-				//multiply yield of GutsMan by [%boost]
-				//multiply yield of IceMan by [%boost]
-				//multiply yield of BombMan by [%boost]
+				multiply yield of CutMan by [%boost]
+				multiply yield of GutsMan by [%boost]
+				multiply yield of IceMan by [%boost]
+				multiply yield of BombMan by [%boost]
 				multiply yield of FireMan by [%boost]
-				//multiply yield of ElecMan by [%boost]
+				multiply yield of ElecMan by [%boost]
 				//multiply yield of TimeMan by [%boost]
 				//multiply yield of OilMan by [%boost]
 				//multiply yield of BondMan by [%boost]
@@ -503,7 +544,7 @@ Includes
 			passive:
 				multiply yield of [%robot][%title] by 2
 				multiply yield of MegaMan by 2
-				//multiply cost of [%target][%targetTitle] by .95
+				multiply cost of [%target][%targetTitle] by .95
 			end
 			cost:1 yashichi
 	*include robotResources %name %title="Man" %icon
@@ -593,12 +634,12 @@ Includes
 	*include gearBoost %boost %boostPlus
 		passive:
 			multiply yield of Roll by [%boostPlus]
-			//multiply yield of CutMan by [%boost]
-			//multiply yield of GutsMan by [%boost]
-			//multiply yield of IceMan by [%boost]
-			//multiply yield of BombMan by [%boost]
+			multiply yield of CutMan by [%boost]
+			multiply yield of GutsMan by [%boost]
+			multiply yield of IceMan by [%boost]
+			multiply yield of BombMan by [%boost]
 			multiply yield of FireMan by [%boost]
-			//multiply yield of ElecMan by [%boost]
+			multiply yield of ElecMan by [%boost]
 			//multiply yield of TimeMan by [%boost]
 			//multiply yield of OilMan by [%boost]
 			//multiply yield of BondMan by [%boost]
